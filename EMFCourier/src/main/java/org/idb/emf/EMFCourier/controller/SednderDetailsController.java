@@ -21,14 +21,14 @@ public class SednderDetailsController {
         return "index";
     }
 
-    //this is for get all student list
+    //this is for get all sender list
     @RequestMapping("/all_senderDetails")
-    public String allStudent(Model m){
+    public String allSender(Model m){
         m.addAttribute("stdList",service.getAllSenderDetails());
         return "all_senderDetails";
     }
 
-    //this is for get a student registration form
+    //this is for get a sender registration form
     @RequestMapping("/s_reg_form")
     public String senderAddForm(Model m){
         m.addAttribute("senderDetails", new SenderDetails());
@@ -36,21 +36,21 @@ public class SednderDetailsController {
         return "sender_reg_form";
     }
 
-    //this is for save new student and get all student list
+    //this is for save new student and get all sender list
     @RequestMapping(value = "/add_sender", method = RequestMethod.POST)
-    public String addNewStudent(@ModelAttribute("student") SenderDetails s, Model m ){
+    public String addNewSender(@ModelAttribute("sender") SenderDetails s, Model m ){
         service.saveSenderDetails(s);
         return "redirect:/all_senderDetails";
     }
 
-    //this is for delete a student by id and get all student list
-    @RequestMapping("/delete_student/{id}")
+    //this is for delete a student by id and get all sender list
+    @RequestMapping("/delete_sender/{id}")
     public String deleteSender(@PathVariable("id") Integer id){
         service.deleteSenderDetails(id);
         return "redirect:/all_senderDetails";
     }
     @RequestMapping("/update_sender/{id}")
-    public String studentUpdateForm(@PathVariable("id") Integer id, Model m){
+    public String senderUpdateForm(@PathVariable("id") Integer id, Model m){
         SenderDetails s = service.findSenderDetailsById(id);
         m.addAttribute("sender", s);
         return "/sender_reg_form";
