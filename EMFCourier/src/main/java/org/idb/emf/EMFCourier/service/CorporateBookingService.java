@@ -26,7 +26,7 @@ public class CorporateBookingService {
         return repo.findAll();
     }
 
-    public CorporateBooking findCCById(int cbId){
+    public CorporateBooking findCBById(int cbId){
         return repo.findById(cbId).get();
     }
 }

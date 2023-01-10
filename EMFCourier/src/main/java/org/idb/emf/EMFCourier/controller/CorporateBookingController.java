@@ -1,9 +1,9 @@
 package org.idb.emf.EMFCourier.controller;
 
 import org.idb.emf.EMFCourier.entity.CorporateBooking;
-import org.idb.emf.EMFCourier.entity.CorporateCustomer;
 import org.idb.emf.EMFCourier.service.CorporateBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
+@Controller
 public class CorporateBookingController {
     @Autowired
     CorporateBookingService service;
-
 
     @RequestMapping("/cb_list")
     public String allCoBooking(Model m) {
@@ -46,8 +46,8 @@ public class CorporateBookingController {
 
     @RequestMapping("/cb_edit/{ccId}")
     public String cbEditForm(@PathVariable("ccId") Integer cbId, Model m) {
-        CorporateBooking cblist = service.findCCById(cbId);
+        CorporateBooking cblist = service.findCBById(cbId);
         m.addAttribute("cblist", cblist);
-        return "cc_save_form";
+        return "cb_save_form";
     }
 }
