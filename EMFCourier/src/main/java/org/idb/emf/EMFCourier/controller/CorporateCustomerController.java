@@ -19,11 +19,12 @@ public class CorporateCustomerController {
     CorporateCustomerService service;
 
 
-    @RequestMapping(value = {"", "/index", "/home"})
+    @RequestMapping(value = {"", "/index", "/home", "/about"})
     public String home() {
 
         return "index";
     }
+
 
     @RequestMapping("/cc_list")
     public String allEmp(Model m) {
