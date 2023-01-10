@@ -17,11 +17,7 @@ public class RecipientDetailsController {
     @Autowired
     private RecipientDetailsService service;
 
-//    //this is for index/home page
-//    @RequestMapping("/")
-//    public String home(){
-//        return "index";
-//    }
+
 
     //this is for get all recipient list
     @RequestMapping("/all_recipientDetails")

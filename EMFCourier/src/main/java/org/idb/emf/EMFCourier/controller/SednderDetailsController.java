@@ -15,11 +15,11 @@ public class SednderDetailsController {
     @Autowired
     private SenderDetailsService service;
 
-    //this is for index/home page
-    @RequestMapping("/")
-    public String home(){
-        return "index";
-    }
+//    //this is for index/home page
+//    @RequestMapping("/")
+//    public String home(){
+//        return "index";
+//    }
 
     //this is for get all sender list
     @RequestMapping("/all_senderDetails")
