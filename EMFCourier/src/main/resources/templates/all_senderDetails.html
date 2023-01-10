@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div th:insert="header.html">...</div>
 
-</body>
-</html>
+<main class="main">
+
+    <div class="pagetitle" style="margin-top: 100px">
+        <h1 class="text-center">All Sender</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="card bg-info">
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Sl</th>
+                                <th scope="col">senderName</th>
+                                <th scope="col">senderMobileNo</th>
+                                <th scope="col">email</th>
+                                <th scope="col">PickAddressType</th>
+                                <th scope="col">district</th>
+                                <th scope="col">nearestArea</th>
+                                <th scope="col">senderAddress</th>
+
+
+
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="std : ${stdList}">
+                                <td th:text="${std.id}"> </td>
+                                <td th:text="${std.senderName}"></td>
+                                <td th:text="${std.senderMobileNo}"></td>
+                                <td th:text="${std.email}"></td>
+                                <td th:text="${std.PickAddressType}"></td>
+                                <td th:text="${std.district}"></td>
+                                <td th:text="${std.nearestArea}"></td>
+                                <td th:text="${std.senderAddress}"></td>
+                                <td>
+                                    <a th:href="@{'/delete_sender/'+${std.id}}" class="btn btn-danger">Delete</a>
+                                    <a th:href="@{'/update_sender/'+${std.id}}" class="btn btn-warning">Update</a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<div th:insert="footer.html">...</div>

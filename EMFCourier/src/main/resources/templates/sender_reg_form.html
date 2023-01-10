@@ -5,8 +5,8 @@
     <section class="section">
         <div class="row" style="margin-top: 100px">
             <div class="col-md-8 offset-2">
-                <h1 th:if="${id==null}" class="card-title text-center mt-2">Registration Product</h1>
-                <h1 th:if="${id!=null}" class="card-title text-center mt-2">Update Product</h1>
+                <h1 th:if="${id==null}" class="card-title text-center mt-2">Registration Sender</h1>
+                <h1 th:if="${id!=null}" class="card-title text-center mt-2">Update Sender</h1>
                 <div class="card bg-info">
                     <div class="card-body pt-5">
                         <!-- General Form Elements -->
@@ -95,11 +95,11 @@
 
                             <div class="row mb-3">
 
-<!--                                <div class="col-md-12 text-center">-->
-<!--                                    <button th:if="${eid!=null}" type="submit" class="btn btn-primary">Update</button>-->
-<!--                                    <button th:if="${eid==null}" type="submit" class="btn btn-primary">Submit</button>-->
+                                <div class="col-md-12 text-center">
+                                    <button th:if="${id!=null}" type="submit" class="btn btn-primary">Update</button>
+                                    <button th:if="${id==null}" type="submit" class="btn btn-primary">Submit</button>
 
-<!--                                </div>-->
+                                </div>
                             </div>
 
                         </form><!-- End General Form Elements -->
