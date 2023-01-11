@@ -1,11 +1,11 @@
 <div th:insert="header.html">...</div>
 <div th:insert="sidebar.html">...</div>
 
-<main id="main" class="main" style="background-color: #3d546f">
+<main id="main" class="main">
     <section class="section">
         <div class="row">
             <div class="col-md-10 offset-1">
-                <div class="card">
+                <div class="card" style="background-color: #edeff3; box-shadow: 10px 10px 10px 10px  #fafafa">
                     <div class="card-body">
                         <h3 th:if="${cbId==null}" class="card-title text-center mt-2">Booking From</h3>
                         <h3 th:if="${cbId!=null}" class="card-title text-center mt-2">Edit Data</h3>
