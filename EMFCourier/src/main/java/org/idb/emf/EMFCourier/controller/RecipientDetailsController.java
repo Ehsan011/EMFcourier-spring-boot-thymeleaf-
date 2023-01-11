@@ -36,7 +36,7 @@ public class RecipientDetailsController {
 
     //this is for save new recipient and get all recipient list
     @RequestMapping(value = "/add_recipient", method = RequestMethod.POST)
-    public String addNewRecipient(@ModelAttribute("recipient") RecipientDetails s, Model m ){
+    public String addNewRecipient(@ModelAttribute("recipientDetails") RecipientDetails s, Model m ){
         service.saveRecipientDetails(s);
         return "redirect:/all_recipientDetails";
     }
@@ -50,7 +50,7 @@ public class RecipientDetailsController {
     @RequestMapping("/update_recipient/{id}")
     public String recipientUpdateForm(@PathVariable("id") Integer id, Model m){
         RecipientDetails s = service.findRecipientDetailsById(id);
-        m.addAttribute("recipient", s);
+        m.addAttribute("recipientDetails", s);
         return "/recipient_reg_form";
     }
 

@@ -33,7 +33,7 @@ public class ParcelDetailsController {
 
     //this is for save new student and get all sender list
     @RequestMapping(value = "/add_parcel", method = RequestMethod.POST)
-    public String addNewParcel(@ModelAttribute("parcel") ParcelDetails s, Model m ){
+    public String addNewParcel(@ModelAttribute("parcelDetails") ParcelDetails s, Model m ){
         service.saveParcelDetails(s);
         return "redirect:/all_parcelDetails";
     }
@@ -47,7 +47,7 @@ public class ParcelDetailsController {
     @RequestMapping("/update_parcel/{id}")
     public String parcelUpdateForm(@PathVariable("id") Integer id, Model m){
         ParcelDetails s = service.findParcelDetailsById(id);
-        m.addAttribute("parcel", s);
+        m.addAttribute("parcelDetails", s);
         return "/parcel_reg_form";
     }
 

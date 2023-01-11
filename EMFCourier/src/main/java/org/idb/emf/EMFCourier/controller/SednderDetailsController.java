@@ -38,7 +38,7 @@ public class SednderDetailsController {
 
     //this is for save new student and get all sender list
     @RequestMapping(value = "/add_sender", method = RequestMethod.POST)
-    public String addNewSender(@ModelAttribute("sender") SenderDetails s, Model m ){
+    public String addNewSender(@ModelAttribute("senderDetails") SenderDetails s, Model m ){
         service.saveSenderDetails(s);
         return "redirect:/all_senderDetails";
     }
@@ -52,7 +52,7 @@ public class SednderDetailsController {
     @RequestMapping("/update_sender/{id}")
     public String senderUpdateForm(@PathVariable("id") Integer id, Model m){
         SenderDetails s = service.findSenderDetailsById(id);
-        m.addAttribute("sender", s);
+        m.addAttribute("senderDetails", s);
         return "/sender_reg_form";
     }
 
