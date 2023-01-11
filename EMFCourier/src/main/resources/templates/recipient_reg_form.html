@@ -1,0 +1,122 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<main class="main" id="main">
+  <section class="section">
+    <div class="row" style="margin-top: 100px">
+      <div class="col-md-8 offset-2">
+        <h1 th:if="${id==null}" class="card-title text-center mt-2">Registration Recipient</h1>
+        <h1 th:if="${id!=null}" class="card-title text-center mt-2">Update Recipient</h1>
+        <div class="card bg-info">
+          <div class="card-body pt-5">
+            <!-- General Form Elements -->
+            <form  th:action="@{/add_recipient}" th:object="${recipientDetails}" method="post">
+              <input type="hidden" th:field="*{id}">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Recipient Name</label>
+                <div class="col-sm-10">
+                  <input placeholder="Enter sender name" type="text" class="form-control" th:field="*{recipientName}" />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Recipient Mobile No</label>
+                <div class="col-sm-10">
+                  <input placeholder="Enter sender mobile number" type="text" class="form-control" th:field="*{recipientMobileNo}" />
+                </div>
+              </div>
+
+
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">District</label>
+                <div class="col-sm-10">
+                  <select class="form-select" aria-label="Default select example"
+                          th:field="*{district}">
+                    <option th:value="'Samsung'" th:text="Samsung"></option>
+                    <option th:value="'Walton'" th:text="Walton"></option>
+                    <option th:value="'Hp'" th:text="Hp"></option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Nearest Area</label>
+                <div class="col-sm-10">
+                  <select class="form-select" aria-label="Default select example"
+                          th:field="*{nearestArea}">
+                    <option th:value="'Samsung'" th:text="Samsung"></option>
+                  </select>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Recipient Address</label>
+                <div class="col-sm-10">
+                  <textarea placeholder="Enter sender address" rows="3" class="form-control" th:field="*{recipientAddress}" />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Instruction</label>
+                <div class="col-sm-10">
+                  <textarea placeholder="Enter sender address" rows="3" class="form-control" th:field="*{instruction}" />
+                </div>
+              </div>
+
+
+
+
+
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Send Pick Notifaction</label>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" th:field="*{sendPickNotifaction}"
+                           value="Home"  name="address"/>
+                    <label class="form-check-label" >
+                      Yes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" th:field="*{sendPickNotifaction}"
+                           value="Office" name="address"   />
+                    <label class="form-check-label" >
+                      No
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+
+              <div class="row mb-3">
+
+                <div class="col-md-12 text-center">
+                  <button th:if="${id!=null}" type="submit" class="btn btn-primary">Update</button>
+                  <button th:if="${id==null}" type="submit" class="btn btn-primary">Submit</button>
+
+                </div>
+              </div>
+
+            </form><!-- End General Form Elements -->
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+<div th:insert="footer.html">...</div>

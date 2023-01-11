@@ -40,7 +40,8 @@ public class SednderDetailsController {
     @RequestMapping(value = "/add_sender", method = RequestMethod.POST)
     public String addNewSender(@ModelAttribute("senderDetails") SenderDetails s, Model m ){
         service.saveSenderDetails(s);
-        return "redirect:/all_senderDetails";
+//        return "redirect:/all_senderDetails";
+        return "recipient_reg_form";
     }
 
     //this is for delete a student by id and get all sender list
