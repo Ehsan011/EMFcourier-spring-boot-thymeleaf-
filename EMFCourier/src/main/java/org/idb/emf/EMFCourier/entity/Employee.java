@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="employee_data")
+@Table(name="employeeData")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +30,14 @@ public class Employee {
     private String empAddress;
     @Column(length = 50, nullable = false)
     private String empGender;
-    private int empCode;
-    @Column(length = 50, nullable = false)
-    private Date empDOB;//pk
-    private String empDepartment;//pk
+    private Date empDOB;
+    private int empCode;//pk
+//    @Column(length = 50, nullable = false)
+//    private String empDepartment;//pk
 
-
-
+    @ManyToOne
+    @JoinColumn(name = "did_fk")
+    Department department;
 
 
 }

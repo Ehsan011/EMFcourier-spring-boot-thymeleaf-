@@ -1,0 +1,115 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<main id="main" class="main">
+
+
+    <section class="section">
+        <div class="row">
+            <div class="col-md-10 offset-1">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 th:if="${id==null}" class="card-title text-center mt-2">Add Employee</h3>
+                        <h3 th:if="${id!=null}" class="card-title text-center mt-2">Edit Employee</h3>
+
+
+                        <!-- General Form Elements -->
+                        <form th:action="@{/emp_save}" th:object="${emplist}" method="post">
+                            <input type="hidden" th:field="*{id}">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">First_Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{empFirstName}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Last_Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{empLastName}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" th:field="*{empEmail}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Contact</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{empContact}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Address</label>
+                                <div class="col-sm-10">
+                                    <textarea rows="3" class="form-control" th:field="*{empAddress}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Gender</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" th:field="*{empGender}"
+                                               value="Male" name="gender"/>
+                                        <label class="form-check-label">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" th:field="*{empGender}"
+                                               value="Female" name="gender"/>
+                                        <label class="form-check-label">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Date of Birth</label>
+                                <div class="col-sm-10">
+                                    <input type="Date" class="form-control" th:field="*{empDOB}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Stuff_ID</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{empCode}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Department</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example"
+                                            th:field="*{department}">
+                                        <option th:each="d:${depList}" th:value="${d.depid}"
+                                                th:text="${d.depCode}">--Select--
+                                        </option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+
+                                <div class="col-md-12 text-center">
+                                    <button th:if="${id!=null}" type="submit" class="btn btn-primary">Update</button>
+                                    <button th:if="${id==null}" type="submit" class="btn btn-primary">Submit</button>
+
+                                </div>
+                            </div>
+
+                        </form><!-- End General Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<div th:insert="footer.html">...</div>

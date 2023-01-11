@@ -1,0 +1,79 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1 class="text-center">All Depratments</h1>
+
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-md-10 offset-1">
+
+                <div class="card">
+
+                    <div class="card-body mt-3">
+                        <form th:action="@{/dep_save}" th:object="${dep}" method="post">
+                            <input type="hidden" th:field="*{depid}">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Dep_Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{depName}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Department Code</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{depCode}"/>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12 text-center">
+                                    <button th:if="${depid!=null}" type="submit" class="btn btn-primary">Update</button>
+                                    <button th:if="${depid==null}" type="submit" class="btn btn-primary">Submit</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Dep_Code</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="dep : ${viewDep}">
+                                <td th:text="${dep.depid}"></td>
+                                <td th:text="${dep.depName}"></td>
+                                <td th:text="${dep.depCode}"></td>
+
+                                <td>
+                                    <a th:href="@{'/dep_delete/'+${dep.depid}}" class="btn btn-danger">Delete</a>
+                                    <a th:href="@{'/dep_edit/'+${dep.depid}}" class="btn btn-warning">Update</a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<div th:insert="footer.html">...</div>
