@@ -25,6 +25,12 @@ public class CorporateCustomerController {
         return "index";
     }
 
+    @RequestMapping(value = { "/login"})
+    public String login() {
+
+        return "login";
+    }
+
 
     @RequestMapping("/cc_list")
     public String allEmp(Model m) {

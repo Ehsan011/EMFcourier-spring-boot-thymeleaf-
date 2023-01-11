@@ -25,6 +25,8 @@ public class CorporateCustomer {
     private  String ccAddress;
     @Column(length = 15, nullable = false)
     private  String ccContactNumber;
+    @Column(length = 20, nullable = false)
+    private  String ccPassword;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;

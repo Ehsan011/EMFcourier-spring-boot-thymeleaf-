@@ -20,6 +20,7 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Contact Number</th>
+                                <th scope="col">Password</th>
                                 <th scope="col">--Action--</th>
                             </tr>
                             </thead>
@@ -30,6 +31,7 @@
                                 <td th:text="${pl.ccEmail}"></td>
                                 <td th:text="${pl.ccAddress}"></td>
                                 <td th:text="${pl.ccContactNumber}"></td>
+                                <td th:text="${pl.ccPassword}"></td>
                                 <td>
                                     <a th:href="@{'/cc_delete/'+${pl.ccId}}" class="btn btn-danger">Delete</a>
                                     <a th:href="@{'/cc_edit/'+${pl.ccId}}" class="btn btn-warning">Edit</a>
