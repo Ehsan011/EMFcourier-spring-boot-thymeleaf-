@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>CC LIST</h1>
-</body>
-</html>
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<main id="main" class="main" style="background-color: #86b7fe; margin-top:70px; margin-bottom: 250px " >
+    <div class="pagetitle">
+        <h1 class="text-center">All Data</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-md-10 offset-1">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">--Action--</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="pl : ${cclist}">
+                                <td th:text="${pl.ccId}"> </td>
+                                <td th:text="${pl.ccCompanyName}"></td>
+                                <td th:text="${pl.ccEmail}"></td>
+                                <td th:text="${pl.ccAddress}"></td>
+                                <td th:text="${pl.ccContactNumber}"></td>
+                                <td>
+                                    <a th:href="@{'/cc_delete/'+${pl.ccId}}" class="btn btn-danger">Delete</a>
+                                    <a th:href="@{'/cc_edit/'+${pl.ccId}}" class="btn btn-warning">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<div th:insert="footer.html">...</div>

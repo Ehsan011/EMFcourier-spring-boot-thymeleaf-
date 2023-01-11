@@ -42,7 +42,7 @@ public class CorporateCustomerController {
     }
 
     @RequestMapping(value = "/cc_save", method = RequestMethod.POST)
-    public String empSave(@ModelAttribute("cc") CorporateCustomer cc, Model m) {
+    public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m) {
         service.saveCC(cc);
         return "redirect:/cc_list";
     }
@@ -54,9 +54,10 @@ public class CorporateCustomerController {
     }
 
     @RequestMapping("/cc_edit/{ccId}")
-    public String empEditForm(@PathVariable("ccId") Integer ccId, Model m) {
-        CorporateCustomer cclist = service.findCCById(ccId);
-        m.addAttribute("cclist", cclist);
+    public String ccEditForm(@PathVariable("ccId") Integer ccId, Model m) {
+        CorporateCustomer cc = service.findCCById(ccId);
+        m.addAttribute("corporate", cc);
         return "cc_save_form";
     }
+
 }

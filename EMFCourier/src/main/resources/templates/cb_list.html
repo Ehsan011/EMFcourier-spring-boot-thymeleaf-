@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>CB LIST</h1>
-</body>
-</html>
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<main id="main" class="main" style="background-color: #86b7fe; margin-top:70px; margin-bottom: 250px " >
+    <div class="pagetitle">
+        <h1 class="text-center">All Products</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-md-10 offset-1">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Booking ID</th>
+                                <th scope="col">Parchel Name</th>
+                                <th scope="col">parcel Quantity</th>
+                                <th scope="col">parcel Weight</th>
+                                <th scope="col">parcel Traking Number</th>
+                                <th scope="col">--Action--</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="pl : ${cblist}">
+                                <td th:text="${pl.cbId}"> </td>
+                                <td th:text="${pl.parcelName}"></td>
+                                <td th:text="${pl.parcelQuantity}"></td>
+                                <td th:text="${pl.parcelWeight}"></td>
+                                <td th:text="${pl.parcelTrakingNumber}"></td>
+                                <td>
+                                    <a th:href="@{'/cb_delete/'+${pl.cbId}}" class="btn btn-danger">Delete</a>
+                                    <a th:href="@{'/cb_edit/'+${pl.cbId}}" class="btn btn-warning">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<div th:insert="footer.html">...</div>

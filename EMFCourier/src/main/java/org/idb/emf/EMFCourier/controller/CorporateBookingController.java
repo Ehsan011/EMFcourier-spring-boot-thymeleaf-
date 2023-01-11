@@ -27,13 +27,13 @@ public class CorporateBookingController {
 
     @RequestMapping("/cb_save_form")
     public String cbSaveForm(Model m) {
-        m.addAttribute("corporates", new CorporateBooking());
+        m.addAttribute("corporatesbok", new CorporateBooking());
         m.addAttribute("title", "Add Corporate Customar");
         return "cb_save_form";
     }
 
     @RequestMapping(value = "/cb_save", method = RequestMethod.POST)
-    public String cbOrderSave(@ModelAttribute("cb") CorporateBooking cb, Model m) {
+    public String cbOrderSave(@ModelAttribute("corporatesbok") CorporateBooking cb, Model m) {
         service.saveCb(cb);
         return "redirect:/cb_list";
     }
@@ -47,7 +47,7 @@ public class CorporateBookingController {
     @RequestMapping("/cb_edit/{ccId}")
     public String cbEditForm(@PathVariable("ccId") Integer cbId, Model m) {
         CorporateBooking cblist = service.findCBById(cbId);
-        m.addAttribute("cblist", cblist);
+        m.addAttribute("corporatesbok", cblist);
         return "cb_save_form";
     }
 }

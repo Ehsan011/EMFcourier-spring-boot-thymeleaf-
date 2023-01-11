@@ -22,7 +22,8 @@ public class CorporateBooking {
     @Column(length = 10, nullable = false)
     private String parcelWeight;
 
-    @Column(name = "cb_Traking_no")
+
+    @Column(name = "cb_Traking_no", unique = true, updatable = false)
     private String parcelTrakingNumber;
 
     public CorporateBooking() {
