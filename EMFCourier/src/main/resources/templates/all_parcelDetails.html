@@ -1,10 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div th:insert="header.html">...</div>
 
-</body>
-</html>
+<main class="main">
+
+    <div class="pagetitle" style="margin-top: 100px">
+        <h1 class="text-center">Review</h1>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="card bg-info">
+                    <div class="card-body">
+
+                        <table class="table table-primary">
+                            <thead>
+                            <tr>
+                                <th scope="col">Sender Details</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td th:text="${sd.senderName}"></td>
+                            </tr>
+                            <tr>
+                                <td>Mobile Number</td>
+                                <td th:text="${sd.senderMobileNo}"></td>
+                            </tr>
+                            <tr>
+                                <td>Address Type</td>
+                                <td th:text="${sd.PickAddressType}"></td>
+                            </tr>
+                            <tr>
+                                <td>District</td>
+                                <td th:text="${sd.district}"></td>
+                            </tr>
+                            <tr>
+                                <td>Nearest Area</td>
+                                <td th:text="${sd.nearestArea}"></td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td th:text="${sd.senderAddress}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-primary">
+                            <thead>
+                            <tr>
+                                <th scope="col">Recipient Details</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td th:text="${rd.recipientName}"></td>
+                            </tr>
+                            <tr>
+                                <td>Mobile Number</td>
+                                <td th:text="${rd.recipientMobileNo}"></td>
+                            </tr>
+                            <tr>
+                                <td>District</td>
+                                <td th:text="${rd.district}"></td>
+                            </tr>
+                            <tr>
+                                <td>Nearest Area</td>
+                                <td th:text="${rd.nearestArea}"></td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td th:text="${rd.recipientAddress}"></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+
+                        <table class="table table-primary">
+                            <thead>
+                            <tr>
+                                <th scope="col">Parcel Details</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Courier Type</td>
+                                <td th:text="${pd.selectProductType}"></td>
+                            </tr>
+                            <tr>
+                                <td>package Weight</td>
+                                <td th:text="${pd.packageWeight}"></td>
+                            </tr>
+                            <tr>
+                                <td>Parcel Contain</td>
+                                <td th:text="${pd.whatDoesThisParcelContain}"></td>
+                            </tr>
+                            <tr>
+                                <td>number Of Item</td>
+                                <td th:text="${pd.numberOfItem}"></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<div th:insert="footer.html">...</div>

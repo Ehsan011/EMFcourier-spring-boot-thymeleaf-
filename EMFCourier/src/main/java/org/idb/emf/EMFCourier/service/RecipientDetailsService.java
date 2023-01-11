@@ -17,8 +17,8 @@ public class RecipientDetailsService {
         private RecipientDetailsRepository repo;
 
         //this method for save recipientDetails
-        public void saveRecipientDetails(RecipientDetails s) {
-            repo.save(s);
+        public RecipientDetails saveRecipientDetails(RecipientDetails s) {
+            return repo.save(s);
         }
 
         //this method for delete a recipientDetails

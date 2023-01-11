@@ -14,8 +14,8 @@ public class SenderDetailsService {
 private SenderDetailsRepository repo;
 
     //this method for save sednderDetails
-    public void saveSenderDetails(SenderDetails s){
-        repo.save(s);
+    public SenderDetails saveSenderDetails(SenderDetails s){
+        return repo.save(s);
     }
 
     //this method for delete a sednderDetails

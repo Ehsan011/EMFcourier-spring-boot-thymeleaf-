@@ -16,8 +16,10 @@ public class ParcelDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int senderId;
+    private int recipientId;
     private String selectProductType;
-    private double packageWeight ;
+    private String packageWeight ;
     private String whatDoesThisParcelContain;
     private String  numberOfItem;
 

@@ -5,95 +5,61 @@
     <section class="section">
         <div class="row" style="margin-top: 100px">
             <div class="col-md-8 offset-2">
-                <h1 th:if="${id==null}" class="card-title text-center mt-2">Registration Sender</h1>
-                <h1 th:if="${id!=null}" class="card-title text-center mt-2">Update Sender</h1>
+                <h1 th:if="${id==null}" class="card-title text-center mt-2">Percel Details</h1>
+                <h1 th:if="${id!=null}" class="card-title text-center mt-2">Percel update</h1>
                 <div class="card bg-info">
                     <div class="card-body pt-5">
                         <!-- General Form Elements -->
-                        <form  th:action="@{/add_sender}" th:object="${senderDetails}" method="post">
+                        <form  th:action="@{/add_parcel}" th:object="${parcelDetails}" method="post">
                             <input type="hidden" th:field="*{id}">
+                            <input type="hidden" th:field="*{senderId}">
+                            <input type="hidden" th:field="*{recipientId}">
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Sender Name</label>
+                                <label class="col-sm-2 col-form-label">What do you want to send?</label>
                                 <div class="col-sm-10">
-                                    <input placeholder="Enter sender name" type="text" class="form-control" th:field="*{senderName}" />
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Sender Mobile No</label>
-                                <div class="col-sm-10">
-                                    <input placeholder="Enter sender mobile number" type="text" class="form-control" th:field="*{senderMobileNo}" />
+                                    <input  type="text" class="form-control" th:field="*{selectProductType}" />
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input placeholder="Enter sender email address" type="email" class="form-control" th:field="*{email}" />
-                                </div>
-                            </div>
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Pick Address Type</label>
-                                <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" th:field="*{PickAddressType}"
-                                               value="Home"  name="address"/>
-                                        <label class="form-check-label" >
-                                            Home
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" th:field="*{PickAddressType}"
-                                               value="Office" name="address"   />
-                                        <label class="form-check-label" >
-                                            Office
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" th:field="*{PickAddressType}"
-                                               value="Others" name="address"   />
-                                        <label class="form-check-label" >
-                                            Others
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">District</label>
+                                <label class="col-sm-2 col-form-label">Package weight (KG)</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" aria-label="Default select example"
-                                            th:field="*{district}">
-                                        <option th:value="'Samsung'" th:text="Samsung"></option>
-                                        <option th:value="'Walton'" th:text="Walton"></option>
-                                        <option th:value="'Hp'" th:text="Hp"></option>
+                                            th:field="*{packageWeight}">
+                                        <option th:value="'SelectWeight'" th:text="SelectWeight"></option>
+                                        <option th:value="'Up_to_1kg'" th:text="Up_to_1kg"></option>
+                                        <option th:value="'1-2kg'" th:text="1-2kg"></option>
+                                        <option th:value="'2-3kg'" th:text="2-3kg"></option>
+                                        <option th:value="'3-4kg'" th:text="3-4kg"></option>
+                                        <option th:value="'4-5kg'" th:text="4-5kg"></option>
+                                        <option th:value="'5-6kg'" th:text="5-6kg"></option>
+                                        <option th:value="'6-7kg'" th:text="6-7kg"></option>
+                                        <option th:value="'7-8kg'" th:text="7-8kg"></option>
+                                        <option th:value="'8-9kg'" th:text="8-9kg"></option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Nearest Area</label>
+                                <label class="col-sm-2 col-form-label">What does this parcel contain?</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" aria-label="Default select example"
-                                            th:field="*{nearestArea}">
-                                        <option th:value="'Samsung'" th:text="Samsung"></option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Sender Address</label>
-                                <div class="col-sm-10">
-                                    <textarea placeholder="Enter sender address" rows="3" class="form-control" th:field="*{senderAddress}" />
+                                    <input  type="text" class="form-control" th:field="*{whatDoesThisParcelContain}" />
                                 </div>
                             </div>
 
 
 
-
                             <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Number of Item</label>
+                                <div class="col-sm-10">
+                                    <input placeholder="Number of Item" type="text" class="form-control" th:field="*{numberOfItem}" />
+                                </div>
+                            </div>
+
+
+
+                    <div class="row mb-3">
 
                                 <div class="col-md-12 text-center">
                                     <button th:if="${id!=null}" type="submit" class="btn btn-primary">Update</button>

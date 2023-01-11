@@ -12,6 +12,7 @@
             <!-- General Form Elements -->
             <form  th:action="@{/add_recipient}" th:object="${recipientDetails}" method="post">
               <input type="hidden" th:field="*{id}">
+              <input type="hidden" th:field="*{senderId}">
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Recipient Name</label>
                 <div class="col-sm-10">

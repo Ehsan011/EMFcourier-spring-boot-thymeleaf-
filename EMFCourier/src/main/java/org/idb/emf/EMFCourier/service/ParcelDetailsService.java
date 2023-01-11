@@ -15,8 +15,8 @@ public class ParcelDetailsService {
     private ParcelDetailsRepository repo;
 
     //this method for save sednderDetails
-    public void saveParcelDetails(ParcelDetails s){
-        repo.save(s);
+    public ParcelDetails saveParcelDetails(ParcelDetails s){
+        return repo.save(s);
     }
 
     //this method for delete a sednderDetails

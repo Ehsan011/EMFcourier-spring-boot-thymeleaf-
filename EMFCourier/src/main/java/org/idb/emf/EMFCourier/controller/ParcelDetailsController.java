@@ -2,7 +2,11 @@ package org.idb.emf.EMFCourier.controller;
 
 import org.idb.emf.EMFCourier.entity.ParcelDetails;
 
+import org.idb.emf.EMFCourier.entity.RecipientDetails;
+import org.idb.emf.EMFCourier.entity.SenderDetails;
 import org.idb.emf.EMFCourier.service.ParcelDetailsService;
+import org.idb.emf.EMFCourier.service.RecipientDetailsService;
+import org.idb.emf.EMFCourier.service.SenderDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +19,39 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ParcelDetailsController {
 
    @Autowired
-   private ParcelDetailsService service;
+   private ParcelDetailsService parcelDetailsService;
 
-   @RequestMapping("/all_parcelDetails")
-   public String allParcel(Model m){
-       m.addAttribute("stdList",service.getAllParcelDetails());
+    @Autowired
+    private SenderDetailsService senderDetailsService;
+
+    @Autowired
+    private RecipientDetailsService recipientDetailsService;
+
+   @RequestMapping("/all_parcelDetails/{sender_id}/{recipent_id}/{precel_id}")
+   public String allParcel(
+           @PathVariable(value = "sender_id") int senderId,
+           @PathVariable(value = "recipent_id") int recipentId,
+           @PathVariable(value = "precel_id") int precelId,
+           Model m){
+       SenderDetails sd = senderDetailsService.findSenderDetailsById(senderId);
+       RecipientDetails rd = recipientDetailsService.findRecipientDetailsById(recipentId);
+       ParcelDetails pd = parcelDetailsService.findParcelDetailsById(precelId);
+       m.addAttribute("sd",sd);
+       m.addAttribute("rd",rd);
+       m.addAttribute("pd",pd);
        return "all_parcelDetails";
    }
 
     //this is for get a sender registration form
-    @RequestMapping("/p_reg_form")
-    public String parcelAddForm(Model m){
-        m.addAttribute("parcelDetails", new ParcelDetails());
+    @RequestMapping("/p_reg_form/{send_id}/{rec_id}")
+    public String parcelAddForm(
+            @PathVariable(value = "send_id") int senderId,
+            @PathVariable(value = "rec_id") int recId,
+            Model m){
+        ParcelDetails pd = new ParcelDetails();
+        pd.setSenderId(senderId);
+        pd.setRecipientId(recId);
+        m.addAttribute("parcelDetails", pd);
         m.addAttribute("title", "ParcelDetails Registration");
         return "parcel_reg_form";
     }
@@ -34,19 +59,20 @@ public class ParcelDetailsController {
     //this is for save new student and get all sender list
     @RequestMapping(value = "/add_parcel", method = RequestMethod.POST)
     public String addNewParcel(@ModelAttribute("parcelDetails") ParcelDetails s, Model m ){
-        service.saveParcelDetails(s);
-        return "redirect:/all_parcelDetails";
+        ParcelDetails pd = parcelDetailsService.saveParcelDetails(s);
+        return "redirect:/all_parcelDetails/"+pd.getSenderId()+"/"+pd.getRecipientId()+
+                "/"+pd.getId();
     }
 
     //this is for delete a student by id and get all sender list
     @RequestMapping("/delete_parcel/{id}")
     public String deleteParcel(@PathVariable("id") Integer id){
-        service.deleteParcelDetails(id);
+        parcelDetailsService.deleteParcelDetails(id);
         return "redirect:/all_parcelDetails";
     }
     @RequestMapping("/update_parcel/{id}")
     public String parcelUpdateForm(@PathVariable("id") Integer id, Model m){
-        ParcelDetails s = service.findParcelDetailsById(id);
+        ParcelDetails s = parcelDetailsService.findParcelDetailsById(id);
         m.addAttribute("parcelDetails", s);
         return "/parcel_reg_form";
     }

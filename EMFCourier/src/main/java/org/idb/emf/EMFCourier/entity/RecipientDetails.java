@@ -17,6 +17,7 @@ public class RecipientDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int senderId;
     private String recipientName;
     private String recipientMobileNo;
     private String district;

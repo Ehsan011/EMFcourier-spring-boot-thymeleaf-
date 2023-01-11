@@ -39,9 +39,15 @@ public class SednderDetailsController {
     //this is for save new student and get all sender list
     @RequestMapping(value = "/add_sender", method = RequestMethod.POST)
     public String addNewSender(@ModelAttribute("senderDetails") SenderDetails s, Model m ){
-        service.saveSenderDetails(s);
+       try {
+           SenderDetails sd = service.saveSenderDetails(s);
 //        return "redirect:/all_senderDetails";
-        return "recipient_reg_form";
+           return "redirect:/r_reg_form/"+sd.getId();
+       }catch (Exception e){
+            m.addAttribute("sd", s);
+            e.printStackTrace();
+       }
+        return "sender_reg_form";
     }
 
     //this is for delete a student by id and get all sender list

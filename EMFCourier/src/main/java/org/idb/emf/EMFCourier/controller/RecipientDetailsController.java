@@ -27,18 +27,31 @@ public class RecipientDetailsController {
     }
 
     //this is for get a recipient registration form
-    @RequestMapping("/r_reg_form")
-    public String recipientAddForm(Model m){
-        m.addAttribute("recipientDetails", new RecipientDetails());
+    @RequestMapping("/r_reg_form/{send_id}")
+    public String recipientAddForm(
+            @PathVariable(value = "send_id") int senderId,
+            Model m){
+        RecipientDetails rd = new RecipientDetails();
+        rd.setSenderId(senderId);
+        m.addAttribute("recipientDetails", rd);
         m.addAttribute("title", "RecipientDetails Registration");
         return "recipient_reg_form";
     }
 
     //this is for save new recipient and get all recipient list
     @RequestMapping(value = "/add_recipient", method = RequestMethod.POST)
-    public String addNewRecipient(@ModelAttribute("recipientDetails") RecipientDetails s, Model m ){
-        service.saveRecipientDetails(s);
-        return "redirect:/all_recipientDetails";
+    public String addNewRecipient(
+            @ModelAttribute("recipientDetails") RecipientDetails s,
+            Model m ){
+        try {
+            RecipientDetails rd = service.saveRecipientDetails(s);
+//        return "redirect:/all_senderDetails";
+            return "redirect:/p_reg_form/"+rd.getSenderId()+"/"+rd.getId();
+        }catch (Exception e){
+            m.addAttribute("sd", s);
+            e.printStackTrace();
+        }
+        return "parcel_reg_form";
     }
 
     //this is for delete a student by id and get all sender list
