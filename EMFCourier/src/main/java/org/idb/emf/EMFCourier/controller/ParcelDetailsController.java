@@ -4,6 +4,7 @@ import org.idb.emf.EMFCourier.entity.ParcelDetails;
 
 import org.idb.emf.EMFCourier.entity.RecipientDetails;
 import org.idb.emf.EMFCourier.entity.SenderDetails;
+import org.idb.emf.EMFCourier.repository.SenderDetailsRepository;
 import org.idb.emf.EMFCourier.service.EmailSenderService;
 import org.idb.emf.EMFCourier.service.ParcelDetailsService;
 import org.idb.emf.EMFCourier.service.RecipientDetailsService;
@@ -27,8 +28,12 @@ public class ParcelDetailsController {
     private SenderDetailsService senderDetailsService;
 
     @Autowired
+    SenderDetailsRepository senderDetailsRepository;
+
+    @Autowired
     private RecipientDetailsService recipientDetailsService;
 
+    public int sId=0;
 
     @Autowired
     EmailSenderService emailSenderService;
@@ -39,6 +44,7 @@ public class ParcelDetailsController {
            @PathVariable(value = "recipent_id") int recipentId,
            @PathVariable(value = "precel_id") int precelId,
            Model m){
+       sId=senderId;
        SenderDetails sd = senderDetailsService.findSenderDetailsById(senderId);
        RecipientDetails rd = recipientDetailsService.findRecipientDetailsById(recipentId);
        ParcelDetails pd = parcelDetailsService.findParcelDetailsById(precelId);
@@ -54,6 +60,7 @@ public class ParcelDetailsController {
             @PathVariable(value = "send_id") int senderId,
             @PathVariable(value = "rec_id") int recId,
             Model m){
+
         ParcelDetails pd = new ParcelDetails();
         pd.setSenderId(senderId);
         pd.setRecipientId(recId);
@@ -67,15 +74,19 @@ public class ParcelDetailsController {
     public String addNewParcel(@ModelAttribute("parcelDetails") ParcelDetails s, Model m ){
         ParcelDetails pd = parcelDetailsService.saveParcelDetails(s);
 
-//        SimpleMailMessage message=new SimpleMailMessage();
-//        message.setTo(u.getEmail());
-//        message.setSubject("Confirm Registration");
-//        message.setFrom("info@emranhss.com");
-//        message.setText("Dear "+u.getFirstName()+" "+u.getLastName());
-//        message.setText("To confirm your account, please click here :"+
-//                "http://localhost:8082/confirm-account?token="+confirmationToken.getConfirmationToken());
-//
-//        emailSenderService.sendEmail(message);
+        System.out.println("+++++++++++++++"+pd.getSenderId());
+       SenderDetails senderDetails= senderDetailsRepository.findById(pd.getSenderId()).get();
+
+        System.out.println("+++++++++++++++"+pd.getSenderId());
+        SimpleMailMessage message=new SimpleMailMessage();
+        message.setTo(senderDetails.getEmail());
+        message.setSubject("Confirm Registration");
+        message.setFrom("info@emranhss.com");
+        message.setText("Dear "+senderDetails.getSenderName());
+        message.setText("To confirm your account, please click here :"+
+                ""+s.getParcelTrakingNumber());
+
+        emailSenderService.sendEmail(message);
 
 
 
