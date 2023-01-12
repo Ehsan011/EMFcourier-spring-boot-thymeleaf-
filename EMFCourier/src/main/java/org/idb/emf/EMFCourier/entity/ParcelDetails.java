@@ -5,10 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity // create Table in DB
 @Data // getter and Setter
-@NoArgsConstructor // Default Constructor
+// Default Constructor
 @AllArgsConstructor // perameterised Constructor
 @Table(name = "parcel_details")
 public class ParcelDetails {
@@ -22,6 +23,17 @@ public class ParcelDetails {
     private String packageWeight ;
     private String whatDoesThisParcelContain;
     private String  numberOfItem;
+
+
+    @Column(name = "pp_Traking_no", unique = true, updatable = false)
+    private String parcelTrakingNumber;
+
+   public ParcelDetails(){
+       this.parcelTrakingNumber=UUID.randomUUID().toString();
+
+   }
+
+
 
 
 

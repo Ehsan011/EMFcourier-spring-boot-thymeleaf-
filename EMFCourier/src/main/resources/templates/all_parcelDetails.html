@@ -12,11 +12,11 @@
                 <div class="card bg-info">
                     <div class="card-body">
 
-                        <table class="table table-primary">
+                        <table class="table table-primary" >
                             <thead>
                             <tr>
-                                <th scope="col">Sender Details</th>
-                                <th scope="col">Edit</th>
+                                <th scope="col-md-4">Sender Details</th>
+                                <th scope="col-md-8">Edit</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,8 +49,8 @@
                         <table class="table table-primary">
                             <thead>
                             <tr>
-                                <th scope="col">Recipient Details</th>
-                                <th scope="col">Edit</th>
+                                <th scope="col-md-4">Recipient Details</th>
+                                <th scope="col-md-8">Edit</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -82,8 +82,8 @@
                         <table class="table table-primary">
                             <thead>
                             <tr>
-                                <th scope="col">Parcel Details</th>
-                                <th scope="col">Edit</th>
+                                <th scope="col-md-4">Parcel Details</th>
+                                <th scope="col-md-8">Edit</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -102,6 +102,10 @@
                             <tr>
                                 <td>number Of Item</td>
                                 <td th:text="${pd.numberOfItem}"></td>
+                            </tr>
+                            <tr>
+                                <td>Traking No</td>
+                                <td th:text="${pd.parcelTrakingNumber}"></td>
                             </tr>
 
 

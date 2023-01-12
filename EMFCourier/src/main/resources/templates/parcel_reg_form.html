@@ -7,7 +7,7 @@
             <div class="col-md-8 offset-2">
                 <h1 th:if="${id==null}" class="card-title text-center mt-2">Percel Details</h1>
                 <h1 th:if="${id!=null}" class="card-title text-center mt-2">Percel update</h1>
-                <div class="card bg-info">
+                <div class="card"   style="background-color: #edeff3; box-shadow: 2px 10px 20px 10px  #fafafa">
                     <div class="card-body pt-5">
                         <!-- General Form Elements -->
                         <form  th:action="@{/add_parcel}" th:object="${parcelDetails}" method="post">
@@ -57,6 +57,12 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Parcel Traking Number</label>
+                                <div class="col-sm-10">
+                                    <input placeholder="Number of Item" type="text" class="form-control" th:field="*{parcelTrakingNumber}" />
+                                </div>
+                            </div>
 
 
                     <div class="row mb-3">
