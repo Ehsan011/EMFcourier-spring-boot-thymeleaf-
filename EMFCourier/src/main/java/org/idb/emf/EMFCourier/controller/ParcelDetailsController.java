@@ -4,10 +4,12 @@ import org.idb.emf.EMFCourier.entity.ParcelDetails;
 
 import org.idb.emf.EMFCourier.entity.RecipientDetails;
 import org.idb.emf.EMFCourier.entity.SenderDetails;
+import org.idb.emf.EMFCourier.service.EmailSenderService;
 import org.idb.emf.EMFCourier.service.ParcelDetailsService;
 import org.idb.emf.EMFCourier.service.RecipientDetailsService;
 import org.idb.emf.EMFCourier.service.SenderDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +28,10 @@ public class ParcelDetailsController {
 
     @Autowired
     private RecipientDetailsService recipientDetailsService;
+
+
+    @Autowired
+    EmailSenderService emailSenderService;
 
    @RequestMapping("/all_parcelDetails/{sender_id}/{recipent_id}/{precel_id}")
    public String allParcel(
@@ -60,6 +66,21 @@ public class ParcelDetailsController {
     @RequestMapping(value = "/add_parcel", method = RequestMethod.POST)
     public String addNewParcel(@ModelAttribute("parcelDetails") ParcelDetails s, Model m ){
         ParcelDetails pd = parcelDetailsService.saveParcelDetails(s);
+
+//        SimpleMailMessage message=new SimpleMailMessage();
+//        message.setTo(u.getEmail());
+//        message.setSubject("Confirm Registration");
+//        message.setFrom("info@emranhss.com");
+//        message.setText("Dear "+u.getFirstName()+" "+u.getLastName());
+//        message.setText("To confirm your account, please click here :"+
+//                "http://localhost:8082/confirm-account?token="+confirmationToken.getConfirmationToken());
+//
+//        emailSenderService.sendEmail(message);
+
+
+
+
+
         return "redirect:/all_parcelDetails/"+pd.getSenderId()+"/"+pd.getRecipientId()+
                 "/"+pd.getId();
     }
