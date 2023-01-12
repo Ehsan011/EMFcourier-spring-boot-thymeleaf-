@@ -14,12 +14,26 @@
                             <input type="hidden" th:field="*{id}">
                             <input type="hidden" th:field="*{senderId}">
                             <input type="hidden" th:field="*{recipientId}">
+
+
+
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">What do you want to send?</label>
                                 <div class="col-sm-10">
-                                    <input  type="text" class="form-control" th:field="*{selectProductType}" />
+                                    <select class="form-select" aria-label="Default select example"
+                                            th:field="*{selectProductType}">
+                                        <option th:value="'Document'" th:text="Document"></option>
+                                        <option th:value="'Parcel'" th:text="Parcel"></option>
+                                        <option th:value="'Electronics'" th:text="Electronics"></option>
+                                        <option th:value="'Foods'" th:text="Foods"></option>
+
+                                    </select>
                                 </div>
                             </div>
+
+
+
+
 
 
                             <div class="row mb-3">
