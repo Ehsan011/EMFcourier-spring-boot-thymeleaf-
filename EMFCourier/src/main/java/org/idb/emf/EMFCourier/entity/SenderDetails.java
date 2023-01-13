@@ -23,4 +23,8 @@ public class SenderDetails {
     private String district;
     private String nearestArea;
     private String senderAddress;
+    private String password;
+    private  String role;
+
+//    private boolean isEnabled=false;
 }
