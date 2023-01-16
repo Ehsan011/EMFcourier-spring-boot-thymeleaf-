@@ -13,19 +13,23 @@ public class CorporateCustomerService {
     @Autowired
     CorporateCustomerRepository repo;
 
-    public void saveCC(CorporateCustomer cc){
+    public CorporateCustomer saveCC(CorporateCustomer cc){
         repo.save(cc);
+        return cc;
     }
 
     public void deleteCC(int ccId){
+
         repo.deleteById(ccId);
     }
 
     public List<CorporateCustomer> getAllCC(){
+
         return repo.findAll();
     }
 
     public CorporateCustomer findCCById(int ccId){
+
         return repo.findById(ccId).get();
     }
 }

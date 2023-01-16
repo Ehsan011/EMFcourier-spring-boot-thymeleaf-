@@ -1,24 +1,48 @@
 package org.idb.emf.EMFCourier.controller;
 
 import org.idb.emf.EMFCourier.entity.CorporateCustomer;
+import org.idb.emf.EMFCourier.entity.CorporateToken;
+import org.idb.emf.EMFCourier.repository.CorporateCustomerRepository;
+import org.idb.emf.EMFCourier.repository.CorporateTokenRepository;
 import org.idb.emf.EMFCourier.service.CorporateCustomerService;
+import org.idb.emf.EMFCourier.service.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 public class CorporateCustomerController {
 
+
+
     @Autowired
     CorporateCustomerService service;
+
+    long startTime= 0;
+
+    @Autowired
+    private CorporateCustomerRepository repo;
+    @Autowired
+    private final JavaMailSender javaMailSender;
+    @Autowired
+    EmailSenderService emailSenderService;
+
+    @Autowired
+    private CorporateTokenRepository tokenRepository;
+
+    public CorporateCustomerController(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
 
 
     @RequestMapping(value = {"", "/index", "/home", "/about"})
@@ -50,13 +74,74 @@ public class CorporateCustomerController {
     }
 
     @RequestMapping(value = "/cc_save", method = RequestMethod.POST)
-    public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m,@Valid CorporateCustomer corporateCustomer, BindingResult result) {
-        if (result.hasErrors()) {
-            return "cc_save_form";
-        }
-        service.saveCC(cc);
-         return "redirect:/cc_list";
+    public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m) {
+       try {
+           BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+           cc.setCcPassword(encoder.encode(cc.getCcPassword()));
+           cc.setEnabled(true);
+           cc.setRole("CORPORATE_USER");
+           CorporateCustomer ccm= service.saveCC(cc);
+
+           //  Send validation Email
+           CorporateToken confirmationToken = new CorporateToken(cc);
+           tokenRepository.save(confirmationToken);
+
+           javax.mail.internet.MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+           MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+
+//           SimpleMailMessage message = new SimpleMailMessage();
+           message.setTo(cc.getCcEmail());
+
+           String html = "<!doctype html>\n" +
+                   "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\"\n" +
+                   "      xmlns:th=\"http://www.thymeleaf.org\">\n" +
+                   "<head>\n" +
+                   "    <meta charset=\"UTF-8\">\n" +
+                   "    <meta name=\"viewport\"\n" +
+                   "          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n" +
+                   "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
+                   "    <title>Email</title>\n" +
+                   "</head>\n" +
+                   "<body>\n" +
+//                   "Dear " + ccm.getCcCompanyName() + "\n" + "To confirm your account, please click here :" +
+//                   "http://localhost:8082/confirm-account?token="
+
+                   "<div>Welcome <b>" + ccm.getCcCompanyName() + "</b></div>\n" +
+                   "\n" +
+                   "<div>Your Token is  <b>  </b></div>\n" +
+                   "<div>Plaese Click Here <b> "+ "http://localhost:8082/confirm-account?token="+confirmationToken.getConfirmationToken()+" </b></div>\n" +
+                   "<div> Your username is <b>" + " EMF Courier " + "</b></div>\n" +
+                   "<div> Any Information Please Call <b>" + " 01716371264 " + "</b></div>\n" +
+                   "</body>\n" +
+                   "</html>\n";
+
+           message.setSubject("EMF Courier Confirm Registration");
+           message.setFrom("info@emranhss.com");
+
+           message.setText(html+ confirmationToken.getConfirmationToken(), true);
+           javaMailSender.send(mimeMessage);
+
+//           emailSenderService.sendEmail(message);
+
+           m.addAttribute("msg", "User Registration Successful");
+
+           return "redirect:/login"+cc.getCcId();
+
+       }catch (Exception e){
+           m.addAttribute("cc", cc);
+           e.printStackTrace();
+       }
+         return "/index";
     }
+
+
+
+
+//       }catch (Exception e){
+//            m.addAttribute("sd", s);
+//            e.printStackTrace();
+//       }
+
 
     @RequestMapping("/cc_delete/{ccId}")
     public String ccDelete(@PathVariable("ccId") Integer ccId) {
