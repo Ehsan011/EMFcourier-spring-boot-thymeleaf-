@@ -74,10 +74,9 @@ public class ParcelDetailsController {
     public String addNewParcel(@ModelAttribute("parcelDetails") ParcelDetails s, Model m ){
         ParcelDetails pd = parcelDetailsService.saveParcelDetails(s);
 
-        System.out.println("+++++++++++++++"+pd.getSenderId());
-       SenderDetails senderDetails= senderDetailsRepository.findById(pd.getSenderId()).get();
 
-        System.out.println("+++++++++++++++"+pd.getSenderId());
+        SenderDetails senderDetails= senderDetailsRepository.findById(pd.getSenderId()).get();
+
         SimpleMailMessage message=new SimpleMailMessage();
         message.setTo(senderDetails.getEmail());
         message.setSubject("Confirm Registration");
@@ -85,13 +84,7 @@ public class ParcelDetailsController {
         message.setText("Dear "+senderDetails.getSenderName());
         message.setText("To confirm your account, please click here :"+
                 ""+s.getParcelTrakingNumber());
-
         emailSenderService.sendEmail(message);
-
-
-
-
-
         return "redirect:/all_parcelDetails/"+pd.getSenderId()+"/"+pd.getRecipientId()+
                 "/"+pd.getId();
     }

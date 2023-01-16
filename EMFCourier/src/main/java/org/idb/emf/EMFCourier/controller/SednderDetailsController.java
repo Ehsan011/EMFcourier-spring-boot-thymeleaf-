@@ -3,7 +3,7 @@ package org.idb.emf.EMFCourier.controller;
 import org.idb.emf.EMFCourier.entity.SenderDetails;
 import org.idb.emf.EMFCourier.service.SenderDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,6 +41,12 @@ public class SednderDetailsController {
     @RequestMapping(value = "/add_sender", method = RequestMethod.POST)
     public String addNewSender(@ModelAttribute("senderDetails") SenderDetails s, Model m ){
        try {
+           BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+
+           s.setPassword(encoder.encode(s.getPassword()));
+           s.setEnabled(true);
+           s.setRole("USER");
+
            SenderDetails sd = service.saveSenderDetails(s);
 //        return "redirect:/all_senderDetails";
            return "redirect:/r_reg_form/"+sd.getId();
@@ -57,12 +63,14 @@ public class SednderDetailsController {
         service.deleteSenderDetails(id);
         return "redirect:/all_senderDetails";
     }
+
     @RequestMapping("/update_sender/{id}")
     public String senderUpdateForm(@PathVariable("id") Integer id, Model m){
+        System.out.println(id+"#################################");
         SenderDetails s = service.findSenderDetailsById(id);
+        System.out.println(id+"#################################");
         m.addAttribute("senderDetails", s);
         return "/sender_reg_form";
     }
-
 
 }
