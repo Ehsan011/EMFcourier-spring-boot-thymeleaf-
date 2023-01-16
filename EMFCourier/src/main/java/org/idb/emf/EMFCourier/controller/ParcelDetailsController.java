@@ -73,10 +73,15 @@ public class ParcelDetailsController {
     @RequestMapping(value = "/add_parcel", method = RequestMethod.POST)
     public String addNewParcel(@ModelAttribute("parcelDetails") ParcelDetails s, Model m ){
         ParcelDetails pd = parcelDetailsService.saveParcelDetails(s);
+<<<<<<< Updated upstream
 
 
         SenderDetails senderDetails= senderDetailsRepository.findById(pd.getSenderId()).get();
 
+=======
+       SenderDetails senderDetails= senderDetailsRepository.findById(pd.getSenderId()).get();
+
+>>>>>>> Stashed changes
         SimpleMailMessage message=new SimpleMailMessage();
         message.setTo(senderDetails.getEmail());
         message.setSubject("Confirm Registration");
@@ -85,6 +90,11 @@ public class ParcelDetailsController {
         message.setText("To confirm your account, please click here :"+
                 ""+s.getParcelTrakingNumber());
         emailSenderService.sendEmail(message);
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
         return "redirect:/all_parcelDetails/"+pd.getSenderId()+"/"+pd.getRecipientId()+
                 "/"+pd.getId();
     }
@@ -101,6 +111,15 @@ public class ParcelDetailsController {
         m.addAttribute("parcelDetails", s);
         return "/parcel_reg_form";
     }
+
+//    @RequestMapping("/update_sender/{id}")
+//    public String senderUpdateForm(@PathVariable("id") Integer id, Model m){
+//        System.out.println(id+"#################################");
+//        SenderDetails s = senderDetailsService.findSenderDetailsById(id);
+//        System.out.println(id+"#################################");
+//        m.addAttribute("senderDetails", s);
+//        return "/sender_reg_form";
+//    }
 
 
 }

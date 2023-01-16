@@ -27,6 +27,10 @@ public class SenderDetails {
     private String senderAddress;
     private String password;
     private  String role;
+<<<<<<< Updated upstream
 
     private boolean isEnabled;
+=======
+    private boolean isEnabled=false;
+>>>>>>> Stashed changes
 }

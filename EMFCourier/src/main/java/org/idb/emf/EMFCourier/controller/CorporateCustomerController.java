@@ -5,11 +5,13 @@ import org.idb.emf.EMFCourier.service.CorporateCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -48,9 +50,12 @@ public class CorporateCustomerController {
     }
 
     @RequestMapping(value = "/cc_save", method = RequestMethod.POST)
-    public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m) {
+    public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m,@Valid CorporateCustomer corporateCustomer, BindingResult result) {
+        if (result.hasErrors()) {
+            return "cc_save_form";
+        }
         service.saveCC(cc);
-        return "redirect:/cc_list";
+         return "redirect:/cc_list";
     }
 
     @RequestMapping("/cc_delete/{ccId}")
