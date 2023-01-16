@@ -45,11 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers( "/","/home","/assets/**", "/s_reg_form","/add_sender","/r_reg_form/{send_id}","/add_recipient", "/p_reg_form/{send_id}/{rec_id}","/add_parcel","/cc_save_form","/cb_save_form")
+                .antMatchers( "/","/home","/assets/**","/s_reg_form","/add_sender","/r_reg_form/{send_id}","/add_recipient", "/p_reg_form/{send_id}/{rec_id}","/add_parcel","/cc_save_form","/cb_save_form")
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/**").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/all_parcelDetails/{sender_id}/{recipent_id}/{precel_id}", "/update_sender/{id}", "/update_recipient/{id}", "/update_parcel/{id}").hasAnyAuthority("USER")
                 .antMatchers("/**").hasAnyAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()

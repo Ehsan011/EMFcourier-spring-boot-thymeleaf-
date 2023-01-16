@@ -13,6 +13,8 @@ import javax.persistence.*;
 @Table(name = "sender_details")  // define table name in db
 public class SenderDetails {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
