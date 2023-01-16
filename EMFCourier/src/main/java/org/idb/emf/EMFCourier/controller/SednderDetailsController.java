@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SednderDetailsController {
@@ -39,7 +36,9 @@ public class SednderDetailsController {
 
     //this is for save new student and get all sender list
     @RequestMapping(value = "/add_sender", method = RequestMethod.POST)
-    public String addNewSender(@ModelAttribute("senderDetails") SenderDetails s, Model m ){
+    public String addNewSender(
+            @ModelAttribute("senderDetails") SenderDetails s,
+            Model m ){
        try {
            BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
 
@@ -57,6 +56,34 @@ public class SednderDetailsController {
         return "sender_reg_form";
     }
 
+    @RequestMapping(value = "/update_sender", method = RequestMethod.POST)
+    public String senderUpdate(
+            @ModelAttribute("senderDetails") SenderDetails s,
+            @RequestParam(value = "recpId") int recpId,
+            @RequestParam(value = "perId") int perId,
+            Model m ){
+        try {
+            BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+
+            s.setPassword(encoder.encode(s.getPassword()));
+            s.setEnabled(true);
+            s.setRole("USER");
+
+            SenderDetails sd = service.saveSenderDetails(s);
+//        return "redirect:/all_senderDetails";
+            return "redirect:/all_parcelDetails/"+s.getId()+"/"+recpId+
+                    "/"+perId;
+        }catch (Exception e){
+            m.addAttribute("sd", s);
+            e.printStackTrace();
+        }
+        m.addAttribute("senderDetails", s);
+        m.addAttribute("senderId", s.getId());
+        m.addAttribute("recpId", recpId);
+        m.addAttribute("perId", perId);
+        return "sender_reg_form";
+    }
+
     //this is for delete a student by id and get all sender list
     @RequestMapping("/delete_sender/{id}")
     public String deleteSender(@PathVariable("id") Integer id){
@@ -64,12 +91,17 @@ public class SednderDetailsController {
         return "redirect:/all_senderDetails";
     }
 
-    @RequestMapping("/update_sender/{id}")
-    public String senderUpdateForm(@PathVariable("id") Integer id, Model m){
-        System.out.println(id+"#################################");
-        SenderDetails s = service.findSenderDetailsById(id);
-        System.out.println(id+"#################################");
+    @RequestMapping("/edit_sender/{sender_id}/{recp_id}/{per_id}")
+    public String senderUpdateForm(
+            @PathVariable("sender_id") Integer senderId,
+            @PathVariable("recp_id") Integer recpId,
+            @PathVariable("per_id") Integer perId
+            , Model m){
+        SenderDetails s = service.findSenderDetailsById(senderId);
         m.addAttribute("senderDetails", s);
+        m.addAttribute("senderId", senderId);
+        m.addAttribute("recpId", recpId);
+        m.addAttribute("perId", perId);
         return "/sender_reg_form";
     }
 

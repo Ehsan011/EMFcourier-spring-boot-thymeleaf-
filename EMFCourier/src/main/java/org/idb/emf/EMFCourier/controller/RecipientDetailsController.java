@@ -7,10 +7,7 @@ import org.idb.emf.EMFCourier.service.RecipientDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class RecipientDetailsController {
@@ -51,16 +48,45 @@ public class RecipientDetailsController {
         return "parcel_reg_form";
     }
 
+    @RequestMapping(value = "/update_recipient", method = RequestMethod.POST)
+    public String updateRecipient(
+            @ModelAttribute("recipientDetails") RecipientDetails s,
+            @RequestParam(value = "perId") int perId,
+            Model m ){
+        try {
+            RecipientDetails rd = service.saveRecipientDetails(s);
+//        return "redirect:/all_senderDetails";
+            return "redirect:/all_parcelDetails/"+s.getSenderId()+"/"+s.getId()+
+                    "/"+perId;
+        }catch (Exception e){
+            m.addAttribute("recipientDetails", s);
+            e.printStackTrace();
+        }
+
+        m.addAttribute("recipientDetails", s);
+        m.addAttribute("senderId", s.getSenderId());
+        m.addAttribute("recpId", s.getId());
+        m.addAttribute("perId", perId);
+        return "parcel_reg_form";
+    }
+
     //this is for delete a student by id and get all sender list
     @RequestMapping("/delete_recipient/{id}")
     public String deleteRecipient(@PathVariable("id") Integer id){
         service.deleteRecipientDetails(id);
         return "redirect:/all_recipientDetails";
     }
-    @RequestMapping("/update_recipient/{id}")
-    public String recipientUpdateForm(@PathVariable("id") Integer id, Model m){
-        RecipientDetails s = service.findRecipientDetailsById(id);
+    @RequestMapping("/edit_recipient/{sender_id}/{recp_id}/{per_id}")
+    public String recipientUpdateForm(
+            @PathVariable("sender_id") Integer senderId,
+            @PathVariable("recp_id") Integer recpId,
+            @PathVariable("per_id") Integer perId,
+            Model m){
+        RecipientDetails s = service.findRecipientDetailsById(recpId);
         m.addAttribute("recipientDetails", s);
+        m.addAttribute("senderId", senderId);
+        m.addAttribute("recpId", recpId);
+        m.addAttribute("perId", perId);
         return "/recipient_reg_form";
     }
 

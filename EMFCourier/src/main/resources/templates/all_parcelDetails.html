@@ -16,12 +16,11 @@
                             <thead>
                             <tr>
                                 <th scope="col-md-4">Sender Details</th>
-<<<<<<< Updated upstream
-                                <th scope="col-md-8">Edit</th>
-                                <a th:href="@{'/update_sender/'+${sd.id}}" class="btn btn-warning">Edit</a>
-=======
-                                <a th:href="@{'/update_sender/'+${sd.id}}" class="btn btn-warning col-md-4">Edit</a>
->>>>>>> Stashed changes
+
+                                <th scope="col-md-8">
+                                    <a th:href="@{'/edit_sender/'+${sd.id}+'/'+${rd.id}+'/'+${pd.id}+'' }" class="btn btn-warning">Edit</a>
+                                </th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -55,7 +54,9 @@
                             <thead>
                             <tr>
                                 <th scope="col-md-4">Recipient Details</th>
-                                <th scope="col-md-8">Edit</th>
+                                <th scope="col-md-8">
+                                    <a th:href="@{'/edit_recipient/'+${sd.id}+'/'+${rd.id}+'/'+${pd.id}+'' }" class="btn btn-warning">Edit</a>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>

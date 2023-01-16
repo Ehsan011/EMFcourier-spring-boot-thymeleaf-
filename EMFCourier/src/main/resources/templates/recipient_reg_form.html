@@ -5,14 +5,15 @@
   <section class="section" >
     <div class="row" style="margin-top: 100px">
       <div class="col-md-8 offset-2">
-        <h1 th:if="${id==null}" class="card-title text-center mt-2">Registration Recipient</h1>
-        <h1 th:if="${id!=null}" class="card-title text-center mt-2">Update Recipient</h1>
+        <h1 th:if="${recpId==null}" class="card-title text-center mt-2">Registration Recipient</h1>
+        <h1 th:if="${recpId!=null}" class="card-title text-center mt-2">Update Recipient</h1>
         <div class="card " style="background-color: #edeff3; box-shadow: 2px 10px 20px 10px  #fafafa">
           <div class="card-body pt-5">
             <!-- General Form Elements -->
-            <form  th:action="@{/add_recipient}" th:object="${recipientDetails}" method="post">
+            <form  th:action="@{${recpId == null?'/add_recipient': '/update_recipient'}}" th:object="${recipientDetails}" method="post">
               <input type="hidden" th:field="*{id}">
               <input type="hidden" th:field="*{senderId}">
+              <input type="hidden" name="perId" th:value="${perId}">
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Recipient Name</label>
                 <div class="col-sm-10">
@@ -25,6 +26,9 @@
                   <input placeholder="Enter sender mobile number" type="text" class="form-control" th:field="*{recipientMobileNo}" />
                 </div>
               </div>
+
+
+
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">District</label>
                 <div class="col-sm-10">
@@ -34,6 +38,7 @@
                     <option th:value="'Pabna'" th:text="pabna"></option>
                     <option th:value="'Bogra'" th:text="Bogra"></option>
                     <option th:value="'Gazipur'" th:text="Gazipur"></option>
+
                   </select>
                 </div>
               </div>
@@ -53,9 +58,18 @@
                     <option th:value="'Kunia'" th:text="'Kunia'"></option>
                     <option th:value="'Gabtoli'" th:text="'Gabtoli'"></option>
                     <option th:value="'Nandigram'" th:text="'Nandigram'"></option>
+
                   </select>
                 </div>
               </div>
+
+
+
+
+
+
+
+
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Recipient Address</label>
                 <div class="col-sm-10">
@@ -69,6 +83,12 @@
                   <textarea placeholder="Enter sender address" rows="3" class="form-control" th:field="*{instruction}" />
                 </div>
               </div>
+
+
+
+
+
+
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Send Pick Notifaction</label>
                 <div class="col-sm-10">
@@ -89,15 +109,21 @@
 
                 </div>
               </div>
+
+
+
+
               <div class="row mb-3">
 
                 <div class="col-md-12 text-center">
-                  <button th:if="${id!=null}" type="submit" class="btn btn-primary">Update</button>
-<!--                  <button th:action="${action}" onclick="history.go(-1);" class="btn btn-primary">back</button>-->
-                  <button th:if="${id==null}" type="submit" class="btn btn-primary">Continue</button>
+                  <button th:if="${recpId!=null}" type="submit" class="btn btn-primary">Update</button>
+                  <button th:if="${recpId==null}" type="submit" class="btn btn-primary">Continue</button>
+
                 </div>
               </div>
+
             </form><!-- End General Form Elements -->
+
           </div>
         </div>
 
