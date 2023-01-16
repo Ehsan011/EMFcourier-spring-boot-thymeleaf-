@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" th:src="@{https://code.jquery.com/jquery-3.6.3.min.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#cars').change(function(){
+            // alert($("#cars").val())
+            var stateId = $("#cars").val();
+            console.log(stateId)
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8990/citys/'+stateId,
+                data: "json",
+                contentType: "application/json",
+                success: function(result) {
+                    var result = JSON.parse(result);
+
+                    var s = '';
+                    for(var i = 0; i < result.length; i++) {
+
+                        s += '<option value="' + result[i].id + '">' + result[i].ct_name + '</option>';
+                    }
+                    $('#comboboxCity').html(s);
+                }
+            });
+        });
+
+    });
+
+
+</script>
+<body>
+
+<h2>Text input fields</h2>
+
+<!--<form th:action="@{/im}" enctype="multipart/form-data" th:method="post">-->
+<!--    <label for="fname">First name:</label><br>-->
+<!--    <input type="file" id="fname" name="image"><br>-->
+<!--    <input type="submit" value="Submit">-->
+<!--</form>-->
+
+<form th:action="@{/dropx}" th:object="${dp}" th:method="post">
+    <label for="cars">Choose a car:</label>
+    <select name="cars" id="cars">
+        <option th:each="d:${states}" th:value="${d.getId()}" th:text="${d.getSt_name()}"></option>
+    </select>
+    <br><br>
+
+    <select id="comboboxCity" style="width:200px"></select>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
