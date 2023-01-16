@@ -40,11 +40,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         return authenticationProvider;
     }
 
+//    @Bean
+//    public DaoAuthenticationProvider authenticationProvider(){
+//        DaoAuthenticationProvider authenticationProvider=new DaoAuthenticationProvider();
+//        authenticationProvider.setUserDetailsService(userDetailsService());
+//        authenticationProvider.setPasswordEncoder(passwordEncoder());
+//        return authenticationProvider;
+//    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+<<<<<<< Updated upstream
                 .antMatchers( "/","/home","/assets/**","/s_reg_form","/add_sender","/r_reg_form/{send_id}","/add_recipient", "/p_reg_form/{send_id}/{rec_id}","/add_parcel","/cc_save_form","/cb_save_form", "/all_parcelDetails/{sender_id}/{recipent_id}/{precel_id}", "/**")
                 .permitAll()
                 .and()
@@ -54,6 +63,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //                .anyRequest()
 //                .authenticated()
 //                .and()
+=======
+                .antMatchers( "/","/home","/assets/**", "/s_reg_form","/add_sender","/r_reg_form/{send_id}","/add_recipient", "/p_reg_form/{send_id}/{rec_id}","/add_parcel","/cc_save_form","/cb_save_form","/all_parcelDetails/{sender_id}/{recipent_id}/{precel_id}")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/**", "/update_sender/**").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/**").hasAnyAuthority("ADMIN")
+                .anyRequest()
+                .authenticated()
+                .and()
+>>>>>>> Stashed changes
                 .formLogin()
                 .usernameParameter("email")
                 .defaultSuccessUrl("/")
