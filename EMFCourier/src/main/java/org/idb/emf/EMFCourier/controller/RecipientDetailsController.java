@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RecipientDetailsController {
     @Autowired
     private RecipientDetailsService service;
-
-
-
     //this is for get all recipient list
     @RequestMapping("/all_recipientDetails")
     public String allRecipient(Model m){
