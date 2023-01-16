@@ -65,11 +65,9 @@ public class CustomUserDetails implements UserDetails {
 
 
     @Override
-<<<<<<< Updated upstream
-    public boolean isEnabled() {
-=======
+
     public boolean isEnabled() { // Our Task for 7-01-22
->>>>>>> Stashed changes
+
         return u.isEnabled();
     }
 }

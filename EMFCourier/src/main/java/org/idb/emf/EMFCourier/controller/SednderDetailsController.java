@@ -46,10 +46,7 @@ public class SednderDetailsController {
            s.setPassword(encoder.encode(s.getPassword()));
            s.setEnabled(true);
            s.setRole("USER");
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
            SenderDetails sd = service.saveSenderDetails(s);
 //        return "redirect:/all_senderDetails";
            return "redirect:/r_reg_form/"+sd.getId();

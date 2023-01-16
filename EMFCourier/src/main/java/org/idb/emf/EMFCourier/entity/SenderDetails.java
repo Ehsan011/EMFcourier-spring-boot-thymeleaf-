@@ -14,7 +14,6 @@ import javax.persistence.*;
 public class SenderDetails {
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -26,11 +25,10 @@ public class SenderDetails {
     private String nearestArea;
     private String senderAddress;
     private String password;
-    private  String role;
-<<<<<<< Updated upstream
+    private String role;
+
 
     private boolean isEnabled;
-=======
-    private boolean isEnabled=false;
->>>>>>> Stashed changes
 }
+
+
