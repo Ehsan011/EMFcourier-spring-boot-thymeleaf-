@@ -5,17 +5,18 @@
     <section class="section">
         <div class="row" style="margin-top: 100px">
             <div class="col-md-8 offset-2">
-                <h1 th:if="${id==null}" class="card-title text-center mt-2">Percel Details</h1>
-                <h1 th:if="${id!=null}" class="card-title text-center mt-2">Percel update</h1>
+                <h1 th:if="${perId ==null}" class="card-title text-center mt-2">Percel Details</h1>
+                <h1 th:if="${perId !=null}" class="card-title text-center mt-2">Percel update</h1>
                 <div class="card"   style="background-color: #edeff3; box-shadow: 2px 10px 20px 10px  #fafafa">
                     <div class="card-body pt-5">
                         <!-- General Form Elements -->
-                        <form  th:action="@{/add_parcel}" th:object="${parcelDetails}" method="post">
+                        <form  th:action="@{${recpId == null?'/add_parcel': '/update_parcel'}}" th:object="${parcelDetails}" method="post">
                             <input type="hidden" th:field="*{id}">
                             <input type="hidden" th:field="*{senderId}">
                             <input type="hidden" th:field="*{recipientId}">
 
 
+                            <input type="hidden" name="perId" th:value="${perId}">
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">What do you want to send?</label>
@@ -73,6 +74,21 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Payment</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example"
+                                            th:field="*{payment}">
+                                        <option th:value="'2000'" th:text="'200'"></option>
+                                        <option th:value="'300'" th:text="'300'"></option>
+                                        <option th:value="'400'" th:text="'400'"></option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Parcel Traking Number</label>
                                 <div class="col-sm-10">
                                     <input placeholder="Number of Item" type="text" class="form-control" th:field="*{parcelTrakingNumber}" />
@@ -80,11 +96,19 @@
                             </div>
 
 
-                    <div class="row mb-3">
+
+
+
+
+
+
+
+
+                            <div class="row mb-3">
 
                                 <div class="col-md-12 text-center">
-                                    <button th:if="${id!=null}" type="submit" class="btn btn-primary">Update</button>
-                                    <button th:if="${id==null}" type="submit" class="btn btn-primary">Submit</button>
+                                    <button th:if="${perId !=null}" type="submit" class="btn btn-primary">Update</button>
+                                    <button th:if="${perId ==null}" type="submit" class="btn btn-primary">Submit</button>
 
                                 </div>
                             </div>
