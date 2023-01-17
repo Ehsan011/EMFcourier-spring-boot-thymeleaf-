@@ -23,6 +23,7 @@ public class ParcelDetails {
     private String packageWeight ;
     private String whatDoesThisParcelContain;
     private String  numberOfItem;
+    private String payment;
 
 
     @Column(name = "pp_Traking_no", unique = true, updatable = false)

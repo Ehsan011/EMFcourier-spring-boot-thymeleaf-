@@ -15,9 +15,9 @@
                         <table class="table table-primary" >
                             <thead>
                             <tr>
-                                <th scope="col-md-4">Sender Details</th>
+                                <th class="col-md-4">Sender Details</th>
 
-                                <th scope="col-md-8">
+                                <th class="col-md-8">
                                     <a th:href="@{'/edit_sender/'+${sd.id}+'/'+${rd.id}+'/'+${pd.id}+'' }" class="btn btn-warning">Edit</a>
                                 </th>
 
@@ -53,8 +53,8 @@
                         <table class="table table-primary">
                             <thead>
                             <tr>
-                                <th scope="col-md-4">Recipient Details</th>
-                                <th scope="col-md-8">
+                                <th class="col-md-4">Recipient Details</th>
+                                <th class="col-md-8">
                                     <a th:href="@{'/edit_recipient/'+${sd.id}+'/'+${rd.id}+'/'+${pd.id}+'' }" class="btn btn-warning">Edit</a>
                                 </th>
                             </tr>
@@ -88,8 +88,10 @@
                         <table class="table table-primary">
                             <thead>
                             <tr>
-                                <th scope="col-md-4">Parcel Details</th>
-                                <th scope="col-md-8">Edit</th>
+                                <th class="col-md-4">Parcel Details</th>
+                                <th class="col-md-8">
+                                    <a th:href="@{'/edit_parcel/'+${sd.id}+'/'+${rd.id}+'/'+${pd.id}+'' }" class="btn btn-warning">Edit</a>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -110,14 +112,41 @@
                                 <td th:text="${pd.numberOfItem}"></td>
                             </tr>
                             <tr>
+                                <td>Payment</td>
+                                <td th:text="${pd.payment}"></td>
+                            </tr>
+                            <tr>
                                 <td>Traking No</td>
                                 <td th:text="${pd.parcelTrakingNumber}"></td>
                             </tr>
 
 
+
                             </tbody>
                         </table>
                         <!-- End Default Table Example -->
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">I agree with the terms and conditions</label>
+                        </div>
+                        <div class="form-check">
+
+                            <button type="submit" class="btn btn-primary float-end ">Confirm & Pay</button>
+
+
+                        </div>
+
+
+
+<!--                        <div class="book-confirm">-->
+<!--                            <h3><span class="total_charge"></span> <span>15% VAT Included</span> </h3>-->
+<!--                            <a href="#booking-page" onclick="fullFormSubmit();" class="common-btn">CONFIRM &-->
+<!--                                PAY</a>-->
+<!--                        </div>-->
+
+
+
                     </div>
                 </div>
 
@@ -128,4 +157,27 @@
 
 </main><!-- End #main -->
 
-<div th:insert="footer.html">...</div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script th:src="@{/assets/vendor/apexcharts/apexcharts.min.js}"></script>
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/chart.js/chart.min.js}"></script>
+<script th:src="@{/assets/vendor/echarts/echarts.min.js}"></script>
+<script th:src="@{/assets/vendor/quill/quill.min.js}"></script>
+<script th:src="@{/assets/vendor/simple-datatables/simple-datatables.js}"></script>
+<script th:src="@{/assets/vendor/tinymce/tinymce.min.js}"></script>
+<script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
+<script th:src="@{/assets/vendor/purecounter/purecounter_vanilla.js}"></script>
+<script th:src="@{/assets/vendor/glightbox/js/glightbox.min.js}"></script>
+<script th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/aos/aos.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{/assets/js/main.js}"></script>
+
+</body>
+
+</html>

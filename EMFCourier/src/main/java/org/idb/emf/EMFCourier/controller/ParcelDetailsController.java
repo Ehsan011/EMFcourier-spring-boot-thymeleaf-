@@ -100,12 +100,28 @@ public class ParcelDetailsController {
         parcelDetailsService.deleteParcelDetails(id);
         return "redirect:/all_parcelDetails";
     }
-    @RequestMapping("/update_parcel/{id}")
-    public String parcelUpdateForm(@PathVariable("id") Integer id, Model m){
-        ParcelDetails s = parcelDetailsService.findParcelDetailsById(id);
+
+    @RequestMapping(value = "/update_parcel", method = RequestMethod.POST)
+    public String parcelUpdateForm(@ModelAttribute("parcelDetails") ParcelDetails s, Model m){
+       try {
+           ParcelDetails pd = parcelDetailsService.findParcelDetailsById(s.getId());
+//           return "redirect:/all_senderDetails";
+        return "redirect:/all_parcelDetails/"+s.getSenderId()+"/"+s.getRecipientId()+
+              "/"+s.getId();
+       }
+       catch (Exception e){
+           m.addAttribute("parcelDetails", s);
+           e.printStackTrace();
+       }
+
         m.addAttribute("parcelDetails", s);
+       m.addAttribute("senderId", s.getSenderId());
+     m.addAttribute("recpId", s.getRecipientId());
+       m.addAttribute("perId", s.getId());
+
         return "/parcel_reg_form";
     }
+
 
 //    @RequestMapping("/update_sender/{id}")
 //    public String senderUpdateForm(@PathVariable("id") Integer id, Model m){
@@ -115,6 +131,24 @@ public class ParcelDetailsController {
 //        m.addAttribute("senderDetails", s);
 //        return "/sender_reg_form";
 //    }
+
+
+    @RequestMapping("/edit_parcel/{sender_id}/{recp_id}/{per_id}")
+    public String parcelUpdateForm(
+            @PathVariable("sender_id") Integer senderId,
+            @PathVariable("recp_id") Integer recpId,
+            @PathVariable("per_id") Integer perId,
+            Model m){
+       ParcelDetails s=parcelDetailsService.findParcelDetailsById(perId);
+
+        m.addAttribute("parcelDetails", s);
+        m.addAttribute("senderId", senderId);
+        m.addAttribute("recpId", recpId);
+        m.addAttribute("perId", perId);
+        return "/parcel_reg_form";
+    }
+
+
 
 
 }
