@@ -114,9 +114,9 @@ public class ParcelDetailsController {
            e.printStackTrace();
        }
 
-        m.addAttribute("parcelDetails", s);
+       m.addAttribute("parcelDetails", s);
        m.addAttribute("senderId", s.getSenderId());
-     m.addAttribute("recpId", s.getRecipientId());
+       m.addAttribute("recpId", s.getRecipientId());
        m.addAttribute("perId", s.getId());
 
         return "/parcel_reg_form";
