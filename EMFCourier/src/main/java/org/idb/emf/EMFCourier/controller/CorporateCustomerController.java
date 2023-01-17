@@ -42,10 +42,20 @@ public class CorporateCustomerController {
     }
 
 
-    @RequestMapping(value = {"/", "/index", "/home", "/about"})
+    @RequestMapping(value = {"/", "/index", "/home" })
     public String home() {
 
         return "index";
+    }
+    @RequestMapping(value =  "/about")
+    public String about() {
+
+        return "about";
+    }
+    @RequestMapping(value =  "/admin")
+    public String admin() {
+
+        return "admin";
     }
 
     @RequestMapping(value = { "/login"})
@@ -128,7 +138,7 @@ public class CorporateCustomerController {
            m.addAttribute("cc", cc);
            e.printStackTrace();
        }
-         return "/index";
+        return "redirect:/index";
     }
 
 
@@ -149,7 +159,6 @@ public class CorporateCustomerController {
         } else {
             m.addAttribute("message", "The link is invalid or broken!");
         }
-
         return "redirect:/";
     }
 
