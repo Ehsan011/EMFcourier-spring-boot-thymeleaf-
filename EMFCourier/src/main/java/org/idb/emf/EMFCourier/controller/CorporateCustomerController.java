@@ -42,7 +42,7 @@ public class CorporateCustomerController {
     }
 
 
-    @RequestMapping(value = {"", "/index", "/home", "/about"})
+    @RequestMapping(value = {"/", "/index", "/home", "/about"})
     public String home() {
 
         return "index";
@@ -74,7 +74,7 @@ public class CorporateCustomerController {
     public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m) {
        try {
            long s=System.currentTimeMillis();
-           startTime+=s+39000;
+           startTime+=s+4000000;
 
            BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
            cc.setCcPassword(encoder.encode(cc.getCcPassword()));
@@ -121,8 +121,9 @@ public class CorporateCustomerController {
 
            m.addAttribute("msg", "User Registration Successful");
 
-           return "redirect:/login"+cc.getCcId();
+           return "redirect:/";
 
+//           +cc.getCcId()
        }catch (Exception e){
            m.addAttribute("cc", cc);
            e.printStackTrace();
@@ -142,14 +143,11 @@ public class CorporateCustomerController {
                 user.setEnabled(true);
                 repo.save(user);
                 m.addAttribute("message","Account Verified" );
-
             }else{
                 System.out.println("Time-----------Out");
             }
-
         } else {
             m.addAttribute("message", "The link is invalid or broken!");
-
         }
 
         return "redirect:/";

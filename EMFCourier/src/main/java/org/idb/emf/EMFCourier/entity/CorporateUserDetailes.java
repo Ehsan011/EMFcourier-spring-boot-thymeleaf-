@@ -15,7 +15,7 @@ public class CorporateUserDetailes implements UserDetails {
         this.ccu = ccu;
     }
 
-    private CorporateCustomer repo;
+//    private CorporateCustomer repo;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -25,31 +25,31 @@ public class CorporateUserDetailes implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return ccu.getCcPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return ccu.getCcEmail();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return ccu.isEnabled();
     }
 }
