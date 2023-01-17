@@ -44,7 +44,6 @@ public class CorporateCustomer {
     private  String ccPassword;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date createdDate;
 
     private String role;
