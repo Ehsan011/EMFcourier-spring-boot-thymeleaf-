@@ -13,10 +13,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -76,10 +73,11 @@ public class CorporateCustomerController {
     @RequestMapping(value = "/cc_save", method = RequestMethod.POST)
     public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m) {
        try {
+           long s=System.currentTimeMillis();
+           startTime+=s+39000;
+
            BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
            cc.setCcPassword(encoder.encode(cc.getCcPassword()));
-           cc.setEnabled(true);
-           cc.setRole("CORPORATE_USER");
            CorporateCustomer ccm= service.saveCC(cc);
 
            //  Send validation Email
@@ -88,8 +86,6 @@ public class CorporateCustomerController {
 
            javax.mail.internet.MimeMessage mimeMessage = javaMailSender.createMimeMessage();
            MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-
-//           SimpleMailMessage message = new SimpleMailMessage();
            message.setTo(cc.getCcEmail());
 
            String html = "<!doctype html>\n" +
@@ -104,7 +100,7 @@ public class CorporateCustomerController {
                    "</head>\n" +
                    "<body>\n" +
 //                   "Dear " + ccm.getCcCompanyName() + "\n" + "To confirm your account, please click here :" +
-//                   "http://localhost:8082/confirm-account?token="
+
 
                    "<div>Welcome <b>" + ccm.getCcCompanyName() + "</b></div>\n" +
                    "\n" +
@@ -135,13 +131,29 @@ public class CorporateCustomerController {
     }
 
 
+    @RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
+    public String confirmCorporatUser(@RequestParam("token") String token, Model m) {
+        CorporateToken confirmationToken = tokenRepository.findByConfirmationToken(token);
+        if(token != null){
+            long endTime=System.currentTimeMillis();
+            if (startTime>endTime){
+                CorporateCustomer user = repo.findByEmail(confirmationToken.getUser().getCcEmail());
+                user.setRole("CORPORATE_USER");
+                user.setEnabled(true);
+                repo.save(user);
+                m.addAttribute("message","Account Verified" );
 
+            }else{
+                System.out.println("Time-----------Out");
+            }
 
-//       }catch (Exception e){
-//            m.addAttribute("sd", s);
-//            e.printStackTrace();
-//       }
+        } else {
+            m.addAttribute("message", "The link is invalid or broken!");
 
+        }
+
+        return "redirect:/";
+    }
 
     @RequestMapping("/cc_delete/{ccId}")
     public String ccDelete(@PathVariable("ccId") Integer ccId) {
