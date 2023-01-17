@@ -48,6 +48,12 @@ public class CorporateCustomerController {
         return "index";
     }
 
+    @RequestMapping(value = {"/successful"})
+    public String msg() {
+
+        return "successful";
+    }
+
     @RequestMapping(value = { "/login"})
     public String login() {
 
