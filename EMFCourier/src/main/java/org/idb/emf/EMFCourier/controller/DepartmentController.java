@@ -32,8 +32,8 @@ public class DepartmentController {
     }
 
     @RequestMapping("/dep_delete/{depId}")
-    public String cbDelete(@PathVariable("depId") Integer cbId) {
-        depService.deleteDep(cbId);
+    public String cbDelete(@PathVariable("depId") Integer id) {
+        depService.deleteDep(id);
         return "redirect:/departments";
     }
 
