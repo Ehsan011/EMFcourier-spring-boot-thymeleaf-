@@ -31,7 +31,7 @@ public class Employee {
     @Column(length = 50, nullable = false)
     private String empGender;
     private Date empDOB;
-    private int empCode;//pk
+    private String empCode;//pk
 //    @Column(length = 50, nullable = false)
 //    private String empDepartment;//pk
 
