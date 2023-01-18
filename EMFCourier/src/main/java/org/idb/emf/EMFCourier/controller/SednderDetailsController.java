@@ -26,6 +26,13 @@ public class SednderDetailsController {
         return "all_senderDetails";
     }
 
+
+    @RequestMapping(value = {"/profile"})
+    public String profile() {
+
+        return "profile";
+    }
+
     //this is for get a sender registration form
     @RequestMapping("/s_reg_form")
     public String senderAddForm(Model m){
@@ -104,5 +111,9 @@ public class SednderDetailsController {
         m.addAttribute("perId", perId);
         return "/sender_reg_form";
     }
+
+
+
+
 
 }

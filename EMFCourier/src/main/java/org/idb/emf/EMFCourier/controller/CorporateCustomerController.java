@@ -64,6 +64,7 @@ public class CorporateCustomerController {
         return "successful";
     }
 
+
     @RequestMapping(value = { "/login"})
     public String login() {
 
