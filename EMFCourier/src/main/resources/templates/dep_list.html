@@ -18,15 +18,11 @@
                         <form th:action="@{/dep_save}" th:object="${dep}" method="post">
                             <input type="hidden" th:field="*{depid}">
                             <div class="row mb-3">
-                                <label class="col-sm-3 col-form-label"><strong>Department Name</strong></label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" th:field="*{depName}"/>
+                                  <input type="text" class="form-control" th:field="*{depName}"/>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-3 col-form-label"><strong>Department Code</strong> </label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" th:field="*{depCode}"/>
+                                   <input type="text" class="form-control" th:field="*{depCode}"/>
                                 </div>
                             </div>
                             <div class="row mb-3">

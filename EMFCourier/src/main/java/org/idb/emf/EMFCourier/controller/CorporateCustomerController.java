@@ -88,28 +88,62 @@ public class CorporateCustomerController {
 
     @RequestMapping(value = "/cc_save", method = RequestMethod.POST)
     public String empSave(@ModelAttribute("corporate") CorporateCustomer cc, Model m) {
+        try {
+            long s=System.currentTimeMillis();
+            startTime+=s+4000000;
 
-           long s=System.currentTimeMillis();
-           startTime+=s+4000000;
+            BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+            cc.setCcPassword(encoder.encode(cc.getCcPassword()));
+            CorporateCustomer ccm= service.saveCC(cc);
 
-           BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
-           cc.setCcPassword(encoder.encode(cc.getCcPassword()));
-           CorporateCustomer ccm= service.saveCC(cc);
+            //  Send validation Email
+            CorporateToken confirmationToken = new CorporateToken(cc);
+            tokenRepository.save(confirmationToken);
 
-           //  Send validation Email
-           CorporateToken confirmationToken = new CorporateToken(cc);
-           tokenRepository.save(confirmationToken);
+            javax.mail.internet.MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+            message.setTo(cc.getCcEmail());
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(cc.getCcEmail());
-        message.setSubject("Confirm Registration");
-        message.setFrom("info@emranhss.com");
-        message.setText("Dear " + cc.getCcCompanyName() + ", ");
-        message.setText("Dear " + cc.getCcCompanyName() + "\n" + "To confirm your account, please click here :" +
-                "http://localhost:8085/confirm-account?token=" + confirmationToken.getConfirmationToken());
-        emailSenderService.sendEmail(message);
-        m.addAttribute("msg", "User Registration Successful");
-        return "redirect:/";
+            String html = "<!doctype html>\n" +
+                    "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\"\n" +
+                    "      xmlns:th=\"http://www.thymeleaf.org\">\n" +
+                    "<head>\n" +
+                    "    <meta charset=\"UTF-8\">\n" +
+                    "    <meta name=\"viewport\"\n" +
+                    "          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n" +
+                    "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n" +
+                    "    <title>Email</title>\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+//                   "Dear " + ccm.getCcCompanyName() + "\n" + "To confirm your account, please click here :" +
+
+                    "<div>Welcome <b>" + ccm.getCcCompanyName() + "</b></div>\n" +
+                    "\n" +
+                    "<div>Your Token is  <b>  </b></div>\n" +
+                    "<div>Plaese Click Here <b> "+ "http://localhost:8085/confirm-account?token="+confirmationToken.getConfirmationToken()+" </b></div>\n" +
+                    "<div> Your username is <b>" + " EMF Courier " + "</b></div>\n" +
+                    "<div> Any Information Please Call <b>" + " 01716371264 " + "</b></div>\n" +
+                    "</body>\n" +
+                    "</html>\n";
+
+            message.setSubject("EMF Courier Confirm Registration");
+            message.setFrom("info@emranhss.com");
+
+            message.setText(html+ confirmationToken.getConfirmationToken(), true);
+            javaMailSender.send(mimeMessage);
+
+//           emailSenderService.sendEmail(message);
+
+            m.addAttribute("msg", "User Registration Successful");
+
+            return "redirect:/";
+
+//           +cc.getCcId()
+        }catch (Exception e){
+            m.addAttribute("cc", cc);
+            e.printStackTrace();
+        }
+        return "/index";
     }
 
 
