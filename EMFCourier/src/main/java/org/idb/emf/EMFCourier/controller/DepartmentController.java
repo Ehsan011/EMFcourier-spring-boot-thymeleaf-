@@ -1,6 +1,6 @@
 package org.idb.emf.EMFCourier.controller;
 
-import org.idb.emf.EMFCourier.entity.CorporateBooking;
+
 import org.idb.emf.EMFCourier.entity.Department;
 import org.idb.emf.EMFCourier.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ public class DepartmentController {
     }
 
     @RequestMapping("/dep_delete/{depId}")
-    public String cbDelete(@PathVariable("depId") Integer id) {
-        depService.deleteDep(id);
+    public String cbDelete(@PathVariable("depId") Integer cbId) {
+        depService.deleteDep(cbId);
         return "redirect:/departments";
     }
 
