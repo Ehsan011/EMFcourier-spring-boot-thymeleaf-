@@ -154,7 +154,7 @@ public class CorporateCustomerController {
         if(token != null){
             long endTime=System.currentTimeMillis();
             if (startTime>endTime){
-                CorporateCustomer user = repo.findByEmail(confirmationToken.getUser().getCcEmail());
+                CorporateCustomer user = repo.findByccEmail(confirmationToken.getUser().getCcEmail());
                 user.setRole("CORPORATE_USER");
                 user.setEnabled(true);
                 repo.save(user);
