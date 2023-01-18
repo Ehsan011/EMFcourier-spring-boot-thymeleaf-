@@ -17,7 +17,7 @@ public class CorporateUserTokenService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        CorporateCustomer cc= repo.findByEmail(email);
+        CorporateCustomer cc= repo.findByccEmail(email);
         if(cc==null){
             throw new UsernameNotFoundException("This email id not found");
         }

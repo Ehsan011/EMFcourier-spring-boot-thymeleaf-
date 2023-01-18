@@ -1,6 +1,7 @@
 package org.idb.emf.EMFCourier.security;
 
 
+import org.idb.emf.EMFCourier.service.CorporateUserTokenService;
 import org.idb.emf.EMFCourier.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,10 +28,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     public UserDetailsService userDetailsService(){
         return new CustomUserDetailsService();
     }
+
+
+    @Bean
+    public UserDetailsService corporateUser(){
+        return new CorporateUserTokenService();
+    }
+
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return  new BCryptPasswordEncoder();
     }
+
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){
@@ -53,14 +64,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers( "/","/home","/assets/**","/s_reg_form","/add_sender","/r_reg_form/{send_id}","/add_recipient", "/p_reg_form/{send_id}/{rec_id}","/add_parcel","/cc_save_form", "/all_parcelDetails/{sender_id}/{recipent_id}/{precel_id}", "/**")
+                .antMatchers( "/","/home","/assets/**","/s_reg_form","/add_sender","/r_reg_form/{send_id}","/add_recipient", "/p_reg_form/{send_id}/{rec_id}","/add_parcel","/cc_save_form", "/all_parcelDetails/{sender_id}/{recipent_id}/{precel_id}")
                 .permitAll()
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/cb_save_form").hasAnyAuthority("CORPORATE_USER")
-//                .antMatchers("/**").hasAnyAuthority("ADMIN")
-//                .anyRequest()
-//                .authenticated()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/cb_save_form").hasAnyAuthority("CORPORATE_USER")
+                .antMatchers("/**").hasAnyAuthority("ADMIN")
+                .anyRequest()
+                .authenticated()
                 .and()
                 .formLogin()
                 .usernameParameter("email")
