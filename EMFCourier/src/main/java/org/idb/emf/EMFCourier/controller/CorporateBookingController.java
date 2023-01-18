@@ -44,8 +44,8 @@ public class CorporateBookingController {
         return "redirect:/cb_list";
     }
 
-    @RequestMapping("/cb_edit/{ccId}")
-    public String cbEditForm(@PathVariable("ccId") Integer cbId, Model m) {
+    @RequestMapping("/cb_edit/{cbId}")
+    public String cbEditForm(@PathVariable("cbId") Integer cbId, Model m) {
         CorporateBooking cblist = service.findCBById(cbId);
         m.addAttribute("corporatesbok", cblist);
         return "cb_save_form";
