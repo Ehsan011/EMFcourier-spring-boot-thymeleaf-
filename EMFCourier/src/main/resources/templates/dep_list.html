@@ -18,17 +18,17 @@
                         <form th:action="@{/dep_save}" th:object="${dep}" method="post">
                             <input type="hidden" th:field="*{depid}">
 
-                            <div class="row mb-3">
+                            <div class="row mb-3 mt-3">
                                 <label class="col-sm-4 col-form-label">Department Name</label>
                                 <div class="col-sm-8">
-                                    <input placeholder="Enter Department name" type="text" class="form-control" th:field="*{depName}" />
+                                    <input  type="text" class="form-control" th:field="*{depName}" />
                                 </div>
 
 
-                                <div class="row mb-3">
+                                <div class="row mb-3 mt-3">
                                     <label class="col-sm-4 col-form-label">Department Code</label>
                                     <div class="col-sm-8">
-                                        <input placeholder="Enter Department Code" type="text" class="form-control" th:field="*{depCode}" />
+                                        <input  type="text" class="form-control" th:field="*{depCode}" />
                                     </div>
 
 
@@ -44,7 +44,7 @@
 <!--                                </div>-->
 
                             <div class="row mb-3">
-                                <div class="col-md-12 text-center">
+                                <div class="col-md-12 text-center mt-3">
                                     <button th:if="${depid!=null}" type="submit" class="btn btn-primary">Update</button>
                                     <button th:if="${depid==null}" type="submit" class="btn btn-primary">Submit</button>
 
