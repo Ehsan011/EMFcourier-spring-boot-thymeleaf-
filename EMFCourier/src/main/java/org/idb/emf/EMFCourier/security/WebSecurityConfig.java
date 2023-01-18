@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     public UserDetailsService corporateUser(){
         return new CorporateUserTokenService();
     }
-    
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
