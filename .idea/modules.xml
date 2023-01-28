@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/EMFCourier/EMFCourier.iml" filepath="$PROJECT_DIR$/EMFCourier/EMFCourier.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/GroupProject.iml" filepath="$PROJECT_DIR$/.idea/GroupProject.iml" />
-    </modules>
-  </component>
-</project>
