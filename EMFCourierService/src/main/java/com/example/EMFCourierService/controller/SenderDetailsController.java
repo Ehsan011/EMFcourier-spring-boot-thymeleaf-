@@ -25,9 +25,9 @@ public class SenderDetailsController {
 
     @PostMapping("/sender/save")
     public SenderDetails save(@RequestBody SenderDetails senserDetails) {
-
-//        return senserDetailsRepository.save(senserDetails);
-     return new SenderDetails();
+    	//System.out.print(senserDetails)
+      return senserDetailsRepository.save(senserDetails);
+//     return new SenderDetails();
     }
 
     @GetMapping("/sender/{id}")

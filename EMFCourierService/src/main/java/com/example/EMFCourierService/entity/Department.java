@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name="department")
 public class Department {
 
@@ -21,4 +18,30 @@ public class Department {
 
     @Column(length = 30, nullable = false)
     private  String depCode;
+
+	public int getDepid() {
+		return depid;
+	}
+
+	public void setDepid(int depid) {
+		this.depid = depid;
+	}
+
+	public String getDepName() {
+		return depName;
+	}
+
+	public void setDepName(String depName) {
+		this.depName = depName;
+	}
+
+	public String getDepCode() {
+		return depCode;
+	}
+
+	public void setDepCode(String depCode) {
+		this.depCode = depCode;
+	}
+    
+    
 }
