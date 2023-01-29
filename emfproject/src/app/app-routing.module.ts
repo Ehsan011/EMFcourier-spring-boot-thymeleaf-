@@ -8,23 +8,29 @@ import { DeliverymanComponent } from './deliveryman/deliveryman.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { ExecutiveOfficeComponent } from './executive-office/executive-office.component';
 import { HomeComponent } from './home/home.component';
+import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
+import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
+import { SenderInfoComponent } from './sender-info/sender-info.component';
+import { TrackingDetailsComponent } from './tracking-details/tracking-details.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 
 const routes: Routes = [
-  { path: 'about_emf', component: AboutComponent },
+  { path: 'about_emf' , component: AboutComponent },
   { path: '', component: UserhomeComponent },
-  { path: 'admin_home', component: HomeComponent },
-  { path: 'corporates', component: CorporatesComponent },
-  { path: 'admin_info', component: AdminComponent },
-  { path: 'booking_info', component: BookingInfoComponent },
-  { path: 'corporate_booking', component: CorporatesComponent },
-  { path: 'delivery_man', component: DeliverymanComponent },
+  { path: 'admin_home' , component: HomeComponent },
+  { path: 'corporates' , component: CorporatesComponent },
+  { path: 'admin_info' , component: AdminComponent },
+  { path: 'booking_info' , component: BookingInfoComponent },
+  { path: 'corporate_booking' , component: CorporatesComponent },
+  { path: 'delivery_man' , component: DeliverymanComponent },
   { path: 'driver_info', component: DriversComponent },
-  { path: 'executive', component: ExecutiveOfficeComponent },
-  { path: 'sender_inf', component: CorporatesComponent },
-
-
+  { path: 'executive' , component: ExecutiveOfficeComponent },
+  { path: 'sender_info' , component: SenderInfoComponent },
+  { path: 'receipt_info' , component: ReceiptInfoComponent },
+  { path: 'parcel_detalis' , component: ParcelDetailsComponent },
+  { path: 'tracking_system' , component: TrackingDetailsComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

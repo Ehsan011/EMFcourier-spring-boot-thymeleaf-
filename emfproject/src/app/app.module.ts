@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CorporateuserComponent } from './corporateuser/corporateuser.component';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -11,7 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AboutComponent } from './about/about.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { CorporatesComponent } from './corporates/corporates.component';
-import { UserComponent } from './user/user.component';
+
 import { DeliverymanComponent } from './deliveryman/deliveryman.component';
 import { ExecutiveOfficeComponent } from './executive-office/executive-office.component';
 import { AdminComponent } from './admin/admin.component';
@@ -26,7 +26,6 @@ import { TrackingDetailsComponent } from './tracking-details/tracking-details.co
 @NgModule({
   declarations: [
     AppComponent,
-    CorporateuserComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
@@ -34,7 +33,6 @@ import { TrackingDetailsComponent } from './tracking-details/tracking-details.co
     AboutComponent,
     UserhomeComponent,
     CorporatesComponent,
-    UserComponent,
     DeliverymanComponent,
     ExecutiveOfficeComponent,
     AdminComponent,
