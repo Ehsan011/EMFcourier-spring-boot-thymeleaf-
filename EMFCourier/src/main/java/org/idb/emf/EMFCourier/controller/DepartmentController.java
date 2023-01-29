@@ -43,4 +43,5 @@ public class DepartmentController {
         m.addAttribute("dep", list);
         return "dep_list";
     }
+
 }
