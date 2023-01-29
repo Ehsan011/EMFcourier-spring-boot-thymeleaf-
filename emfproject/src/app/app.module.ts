@@ -18,6 +18,10 @@ import { AdminComponent } from './admin/admin.component';
 import { BookingInfoComponent } from './booking-info/booking-info.component';
 import { DriversComponent } from './drivers/drivers.component';
 import { CorporatesBookingComponent } from './corporates-booking/corporates-booking.component';
+import { SenderInfoComponent } from './sender-info/sender-info.component';
+import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
+import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
+import { TrackingDetailsComponent } from './tracking-details/tracking-details.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { CorporatesBookingComponent } from './corporates-booking/corporates-book
     AdminComponent,
     BookingInfoComponent,
     DriversComponent,
-    CorporatesBookingComponent
+    CorporatesBookingComponent,
+    SenderInfoComponent,
+    ReceiptInfoComponent,
+    ParcelDetailsComponent,
+    TrackingDetailsComponent
   ],
   imports: [
     BrowserModule,
