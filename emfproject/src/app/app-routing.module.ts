@@ -12,9 +12,11 @@ import { ParcelDetailsComponent } from './parcel-details/parcel-details.componen
 import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
 import { SenderInfoComponent } from './sender-info/sender-info.component';
 import { TrackingDetailsComponent } from './tracking-details/tracking-details.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 
 const routes: Routes = [
+
   { path: 'about_emf' , component: AboutComponent },
   { path: '', component: UserhomeComponent },
   { path: 'admin_home' , component: HomeComponent },
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'receipt_info' , component: ReceiptInfoComponent },
   { path: 'parcel_detalis' , component: ParcelDetailsComponent },
   { path: 'tracking_system' , component: TrackingDetailsComponent },
+  { path: 'user_details' , component: UserDetailsComponent },
+
 ];
 
 

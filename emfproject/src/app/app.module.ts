@@ -22,6 +22,7 @@ import { SenderInfoComponent } from './sender-info/sender-info.component';
 import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
 import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
 import { TrackingDetailsComponent } from './tracking-details/tracking-details.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { TrackingDetailsComponent } from './tracking-details/tracking-details.co
     SenderInfoComponent,
     ReceiptInfoComponent,
     ParcelDetailsComponent,
-    TrackingDetailsComponent
+    TrackingDetailsComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
