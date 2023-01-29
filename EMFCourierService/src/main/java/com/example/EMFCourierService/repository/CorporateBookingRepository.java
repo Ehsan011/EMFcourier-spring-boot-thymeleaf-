@@ -1,8 +1,9 @@
 package com.example.EMFCourierService.repository;
 
-import com.example.EMFCourierService.entity.ParcelDetails;
+import com.example.EMFCourierService.entity.CorporateBooking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 @Repository
-public interface ParcelDetailsRepository extends JpaRepository<ParcelDetails, Integer> {
+public interface CorporateBookingRepository extends JpaRepository<CorporateBooking,Integer> {
 }
