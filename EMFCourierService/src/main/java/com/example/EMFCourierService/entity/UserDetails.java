@@ -19,7 +19,10 @@ public class UserDetails {
     private String recipientName;
     private String recipientMobileNo;
     private String recipientAddress;
-    private String sendPickNotifaction;
+
+
+
+    private String instruction;
     private String selectProductType;
     private String packageWeight ;
     private String  numberOfItem;
@@ -40,7 +43,13 @@ public class UserDetails {
     public void setSenderName(String senderName) {
         this.senderName = senderName;
     }
+    public String getInstruction() {
+        return instruction;
+    }
 
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
     public String getSenderMobileNo() {
         return senderMobileNo;
     }
@@ -105,13 +114,8 @@ public class UserDetails {
         this.recipientAddress = recipientAddress;
     }
 
-    public String getSendPickNotifaction() {
-        return sendPickNotifaction;
-    }
 
-    public void setSendPickNotifaction(String sendPickNotifaction) {
-        this.sendPickNotifaction = sendPickNotifaction;
-    }
+
 
     public String getSelectProductType() {
         return selectProductType;
