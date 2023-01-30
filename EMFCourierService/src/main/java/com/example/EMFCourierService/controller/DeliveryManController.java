@@ -25,13 +25,12 @@ public class DeliveryManController {
         return deliveryManRepository.save(delivery_man);
     }
 
-    @GetMapping("/edithero/{heroId}")
+    @GetMapping("/edit/{heroId}")
     public Delivery_man getEdit(@PathVariable(value = "heroId") Integer heroId){
         return deliveryManRepository.findById(heroId).get();
     }
 
-
-    @GetMapping("/hero/delete/{heroId}")
+    @GetMapping("/delete/{heroId}")
     public void delete(@PathVariable(value = "heroId") int heroId) {
         try {
             deliveryManRepository.deleteById(heroId);
@@ -39,5 +38,5 @@ public class DeliveryManController {
             throw new ResourceNotFoundException("No found data by this Id");
         }
     }
-    
+
 }

@@ -7,29 +7,29 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Delivery_man {
+@NoArgsConstructor
+@Data
+public class ExecutiveOffice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int heroId;
+    private  int id;
 
     @Column
-    private  String heroName;
+    private  String excName;
 
     @Column
-    private  String heroCell;
+    private  String excCell;
 
     @Column
-    private  String heroEmail;
+    private  String excEmail;
 
     @Column
-    private  String heroPassword;
+    private  String excPassword;
 
     @Column
-    private  String heroAddress;
+    private  String excAddress;
 
     @Column
     private  String empId;
