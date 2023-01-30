@@ -28,7 +28,6 @@ public class CorporateCustomerController {
     public CorporateCustomer save(@RequestBody CorporateCustomer corporateCustomer) {
 
         return corporateCustomerRepository.save(corporateCustomer);
-//        return new SenserDetails();
     }
 
     @GetMapping("/coustomer/{id}")
