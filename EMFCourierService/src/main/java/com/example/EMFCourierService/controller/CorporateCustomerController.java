@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"*"})
+@RequestMapping("/corporate")
 public class CorporateCustomerController {
     @Autowired
     private CorporateCustomerRepository corporateCustomerRepository;
@@ -27,7 +28,6 @@ public class CorporateCustomerController {
     public CorporateCustomer save(@RequestBody CorporateCustomer corporateCustomer) {
 
         return corporateCustomerRepository.save(corporateCustomer);
-//        return new SenserDetails();
     }
 
     @GetMapping("/coustomer/{id}")
