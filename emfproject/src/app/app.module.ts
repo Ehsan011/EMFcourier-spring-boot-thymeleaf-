@@ -23,7 +23,8 @@ import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
 import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
 import { TrackingDetailsComponent } from './tracking-details/tracking-details.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
- 
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { UserDetailsComponent } from './user-details/user-details.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
