@@ -25,8 +25,8 @@ export class DeliverymanService {
     return this.http.delete<any>(baseUrl+"/delete/"+heroId)
   }
 
-  updateHero(heroId: number, deliveryman:Deliveryman): Observable <any>{
-    return this.http.put<any> (baseUrl+"/edit/"+deliveryman.heroId, deliveryman)
+  updateHero(deliveryman:Deliveryman): Observable <Deliveryman>{
+    return this.http.put<Deliveryman> (baseUrl+"/edit/"+deliveryman.heroId, deliveryman)
   }
 
   

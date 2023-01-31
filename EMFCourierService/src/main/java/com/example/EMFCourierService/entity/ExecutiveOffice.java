@@ -17,19 +17,19 @@ public class ExecutiveOffice {
     private  int id;
 
     @Column
-    private  String excName;
+    private  String exeName;
 
     @Column
-    private  String excCell;
+    private  String exeCell;
 
     @Column
-    private  String excEmail;
+    private  String exeEmail;
 
     @Column
-    private  String excPassword;
+    private  String exePassword;
 
     @Column
-    private  String excAddress;
+    private  String exeAddress;
 
     @Column
     private  String empId;
