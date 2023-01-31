@@ -32,6 +32,9 @@ public class Delivery_man {
     private  String heroAddress;
 
     @Column
+    private  String heroCity;
+
+    @Column
     private  String empId;
 
 }

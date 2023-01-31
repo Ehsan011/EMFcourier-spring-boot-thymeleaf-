@@ -32,8 +32,6 @@ export class DeliverymanComponent implements OnInit{
   getAllHero(){
     this.deliveryservice.getAllHero().subscribe(res=>{
       this.allhero=res;
-    },err=>{
-      alert("Unable to Delivery Hero");
     })
   }
 
