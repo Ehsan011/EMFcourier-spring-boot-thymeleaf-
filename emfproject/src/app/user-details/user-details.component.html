@@ -166,35 +166,62 @@
           <button type="submit" style="width: 20rem; color:#f2f3f3 ;background-color:#05816d "
             class="btn btn-success btn-block mb-4"> {{isEdit?'Update':
             'Save'}} </button>
-          <button type="reset" class="btn btn-outline-secondary m-2">Reset</button>
+          <!-- <button type="reset" class="btn btn-outline-secondary m-2">Reset</button> -->
         </div>
 
       </form>
     </div>
 
-
-    <div class="border border-info p-4 mt-2">
-      <table class="table table-striped">
+    <h2 class="fw-bold mb-5 text-center mt-3" style="color:#0b0b0b  ">Show user List</h2>
+    <div class="table-responsive">
+      <table class="table table-stribed " >
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Sender Name</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">District</th>
+            <th scope="col">Nearest Area</th>
+            <th scope="col">Sender Address</th>
+            <th scope="col">Recipient Name</th>
+            <th scope="col">Mobile No</th>
+            <th>Recipient Address</th>
+            <th>Product Type</th>
+            <th>Package Weight</th>
+            <th>no Of Item</th>
+            <th>payment</th>
+            <th>Action</th>
+            
           </tr>
         </thead>
+
+       
+
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let UserDetails of user_details">
+            <td>{{UserDetails.senderName}}</td>
+            <td>{{UserDetails.senderMobileNo}}</td>
+            <td>{{UserDetails.district}}</td>
+            <td>{{UserDetails.nearestArea}}</td>
+            <td>{{UserDetails.senderAddress}}</td>
+            <td>{{UserDetails.recipientName}}</td>
+            <td>{{UserDetails.recipientMobileNo}}</td>
+            <td>{{UserDetails.recipientAddress}}</td>
+            <td>{{UserDetails.selectProductType}}</td>
+            <td>{{UserDetails.packageWeight}}</td>
+            <td>{{UserDetails.numberOfItem}}</td>
+            <td>{{UserDetails.payment}}</td>
+            
+
+  
+            <td class="text-center">
+              <button type="button" style="margin-right: 10px;" class="btn btn-warning" (click)="edit(UserDetails)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button type="button" class="btn btn-danger" (click)="deleteById(UserDetails.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+  
+            </td>
           </tr>
         </tbody>
       </table>

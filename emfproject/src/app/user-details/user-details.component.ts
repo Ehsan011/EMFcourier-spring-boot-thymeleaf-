@@ -97,5 +97,19 @@ edit(UserDetails: any){
   this.isEdit = true;
 }
 
+deleteById(id: number){
+  let url = 'http://localhost:9001/user/delete/'+id;
+  this.http.get(url).subscribe({
+    next: response =>{
+      alert("Recored was deleted.");
+    },
+    error: err =>{
+      alert("Recored deletation failed!.");
+    }
+  })
+}
+relode(){
+  window.location.reload();
+}
 
 }
