@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule  } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -23,6 +23,7 @@ import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
 import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
 import { TrackingDetailsComponent } from './tracking-details/tracking-details.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+ 
 
 @NgModule({
   declarations: [
@@ -44,11 +45,12 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     ReceiptInfoComponent,
     ParcelDetailsComponent,
     TrackingDetailsComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
