@@ -1,7 +1,6 @@
 
 export class ApiResponse{
-    status: number | undefined; 
-    message: number | undefined; 
-    result: any ; 
-
+    status?: number;
+    message?: string;
+    result?: any; 
 }
