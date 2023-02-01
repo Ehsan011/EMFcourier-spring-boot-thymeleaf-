@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Deliveryman } from '../model/deliveryman';
 
-const baseUrl:string="http://localhost:9001/deliveryman";
 
 @Injectable({
   providedIn: 'root'
@@ -12,26 +11,26 @@ export class DeliverymanService {
 
   constructor(private http: HttpClient) {  }
 
-  getAllHero(): Observable<any> {
-    return this.http.get(baseUrl+"/getall");
+  // getAllHero(): Observable<any> {
+  //   return this.http.get(baseUrl+"/getall");
   
-  }
+  // }
 
-  createHero(hero: Deliveryman): Observable<any>{
-    return this.http.post<any>(baseUrl+"/savehero", Deliveryman);
-  }
+  // createHero(hero: Deliveryman): Observable<any>{
+  //   return this.http.post<any>(baseUrl+"/savehero", Deliveryman);
+  // }
 
-  deleteHero(heroId: any): Observable<any>{
-    return this.http.delete<any>(baseUrl+"/delete/"+heroId)
-  }
+  // deleteHero(heroId: any): Observable<any>{
+  //   return this.http.delete<any>(baseUrl+"/delete/"+heroId)
+  // }
 
-  updateHero(deliveryman:Deliveryman): Observable <Deliveryman>{
-    return this.http.put<Deliveryman> (baseUrl+"/edit/"+deliveryman.heroId, deliveryman)
-  }
+  // updateHero(deliveryman:Deliveryman): Observable <Deliveryman>{
+  //   return this.http.put<Deliveryman> (baseUrl+"/edit/"+deliveryman.heroId, deliveryman)
+  // }
 
   
-  getHeroById(heroId:number): Observable<any>{
-    return this.http.get(baseUrl+heroId);
-  }
+  // getHeroById(heroId:number): Observable<any>{
+  //   return this.http.get(baseUrl+heroId);
+  // }
 
 }
