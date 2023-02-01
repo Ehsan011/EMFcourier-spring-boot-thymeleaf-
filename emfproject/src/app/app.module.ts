@@ -48,7 +48,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReceiptInfoComponent,
     ParcelDetailsComponent,
     TrackingDetailsComponent,
-    UserDetailsComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

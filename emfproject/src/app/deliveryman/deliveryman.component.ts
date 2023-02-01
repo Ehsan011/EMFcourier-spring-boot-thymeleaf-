@@ -14,49 +14,16 @@ import { DeliverymanService } from 'src/app/services/deliveryman.service';
 
 export class DeliverymanComponent implements OnInit{
 
-  deliveryhero: Deliveryman=new Deliveryman();
-  allhero: Deliveryman[]=[];
-  submitted=false;
+ 
+  
 
-  constructor(
-    private httpClient:HttpClient,
-    private router:Router,
-    private deliveryservice:DeliverymanService) { }
+
+  
 
   ngOnInit(): void {
    
 
   }
 
-  // getAllHero(){
-  //   this.deliveryservice.getAllHero().subscribe(res=>{
-  //     this.allhero=res;
-  //   })
-  // }
-
-  // addHero(){
-  //   this.submitted=true;
-  //   this.deliveryservice.createHero(this.deliveryhero).subscribe(res=>{
-  //     this.ngOnInit()
-  //   },err=>{
-  //     alert(err);
-  //   })
-  // }
-
-  // editHero(){
-  //   this.deliveryservice.updateHero(this.deliveryhero).subscribe( res=> {
-  //     this.ngOnInit();
-  //   }, err=>{
-  //       alert("Failed to update data");
-  //   })
-  // }
-
-  // deleteHero(heroId: Deliveryman){
-  //   this.deliveryservice.deleteHero(heroId).subscribe(res=>{
-  //     this.ngOnInit();
-  //   }, err=>{
-  //     alert("Failed to delete Data")
-  //   }
-  //   )
-  // }
+ 
 }

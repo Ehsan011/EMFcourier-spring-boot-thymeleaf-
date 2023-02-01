@@ -1,38 +1,38 @@
 <main id="main" class="main">
 
     <div class="container" style="margin-bottom: 10ch;" >
-        <div class="border border-info p-4" [hidden]="submitted">
+        <div class="border border-info p-4" >
         <div class="text-center bi-box-arrow-in-right" >
             <h2>
                 Registration Here
             </h2>
         </div>
         <!-- [formGroup]="deliveryhero" -->
-        <form class="row g-12" action="" (ngSubmit)="addHero()" >
+        <form class="row g-12" action="" >
             <div class="col-md-6 for">
               <label for="inputName5" class="form-label">Your Name</label>
-              <input type="text" formControlName="heroName" [(ngModel)]="deliveryhero.heroName" class="form-control" id="inputName5">
+              <input type="text" formControlName="heroName" class="form-control" id="inputName5">
             </div>
             <div class="col-md-6">
               <label for="inputEmail5" class="form-label">Email</label>
-              <input type="email" formControlName="heroEmail" [(ngModel)]="deliveryhero.heroEmail" class="form-control" id="inputEmail5">
+              <input type="email" formControlName="heroEmail"  class="form-control" id="inputEmail5">
             </div>
             <div class="col-md-6">
               <label for="inputPassword5" class="form-label">Phone Number</label>
-              <input type="text" formControlName="heroCell" [(ngModel)]="deliveryhero.heroCell" class="form-control"  heroCell id="inputCell5">
+              <input type="text" formControlName="heroCell"  class="form-control"  heroCell id="inputCell5">
             </div>
             <div class="col-md-6">
               <label for="inputAddress5" class="form-label">Address</label>
-              <input type="text" formControlName="heroAddress" [(ngModel)]="deliveryhero.heroAddress" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
+              <input type="text" formControlName="heroAddress"  class="form-control" id="inputAddres5s" placeholder="1234 Main St">
             </div>
             <div class="col-md-6">
               <label for="inputAddress5" class="form-label">Password</label>
-              <input type="text" formControlName="heroPassword" [(ngModel)]="deliveryhero.heroPassword" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
+              <input type="text" formControlName="heroPassword"  class="form-control" id="inputAddres5s" placeholder="1234 Main St">
             </div>
             <div class="col-md-3">
               <label for="inputState" class="form-label">Working City</label>
               <select id="inputState" class="form-select">
-                <option selected formControlName="heroCity" [(ngModel)]="deliveryhero.heroCity">Choose...</option>
+                <option selected formControlName="heroCity" >Choose...</option>
                 <option>Dhaka</option>
                 <option>Pabna</option>
                 <option>Bhola</option>
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-3">
               <label for="inputZip" class="form-label">Employee id</label>
-              <input type="text" formControlName="empId" [(ngModel)]="deliveryhero.empId" class="form-control" id="inputZip">
+              <input type="text" formControlName="empId"  class="form-control" id="inputZip">
             </div>
             <div class="text-center mt-2">
               <button type="submit" class="btn btn-outline-success m-2">Submit</button>
