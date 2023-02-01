@@ -1,7 +1,9 @@
 package com.example.EMFCourierService.controller;
 import com.example.EMFCourierService.entity.Delivery_man;
+
 import com.example.EMFCourierService.exceptions.ResourceNotFoundException;
 import com.example.EMFCourierService.repository.DeliveryManRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,34 +11,39 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"*"})
-@RequestMapping("/deliveryman")
+
 public class DeliveryManController {
 
     @Autowired
-    DeliveryManRepository deliveryManRepository;
+    private DeliveryManRepository deliveryManRepository;
 
-    @GetMapping("/getall")
-    public List<Delivery_man> getAllHero(){
+    @GetMapping("/delivary/getall")
+    public List<Delivery_man> getAllDelivary() {
+
         return deliveryManRepository.findAll();
+
     }
 
-    @PostMapping("/savehero")
-    public Delivery_man addHero(@RequestBody Delivery_man delivery_man){
+    @PostMapping("/delivary/save")
+    public Delivery_man save(@RequestBody Delivery_man delivery_man) {
+        //System.out.print(senserDetails)
         return deliveryManRepository.save(delivery_man);
+//     return new SenderDetails();
     }
 
-    @PutMapping("/edit/{heroId}")
-    public Delivery_man getEdit(@PathVariable(value = "heroId") Integer heroId){
-        return deliveryManRepository.findById(heroId).get();
+    @GetMapping("/delivary/{id}")
+    public Delivery_man getOne(@PathVariable(value = "id") int id) {
+
+        return deliveryManRepository.findById(id).get();
     }
 
-    @DeleteMapping("/delete/{heroId}")
-    public void delete(@PathVariable(value = "heroId") int heroId) {
+    @GetMapping("/delivary/delete/{id}")
+    public void delete(@PathVariable(value = "id") int id) {
+
         try {
-            deliveryManRepository.deleteById(heroId);
+            deliveryManRepository.deleteById(id);
         } catch (Exception e) {
             throw new ResourceNotFoundException("No found data by this Id");
         }
     }
-
 }
