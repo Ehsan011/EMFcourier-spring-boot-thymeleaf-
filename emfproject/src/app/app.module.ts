@@ -27,6 +27,7 @@ import { TrackingDetailsComponent } from './tracking-details/tracking-details.co
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookingStatusComponent } from './booking-status/booking-status.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReceiptInfoComponent,
     ParcelDetailsComponent,
     TrackingDetailsComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    BookingStatusComponent
   ],
   imports: [
     BrowserModule,
