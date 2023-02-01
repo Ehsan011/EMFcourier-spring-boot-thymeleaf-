@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 import { BookingInfoComponent } from './booking-info/booking-info.component';
+import { BookingStatusComponent } from './booking-status/booking-status.component';
 import { CorporatesComponent } from './corporates/corporates.component';
 import { DeliverymanComponent } from './deliveryman/deliveryman.component';
 import { DriversComponent } from './drivers/drivers.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'parcel_detalis' , component: ParcelDetailsComponent },
   { path: 'tracking_system' , component: TrackingDetailsComponent },
   { path: 'user_details' , component: UserDetailsComponent },
+  { path: 'booking_status' , component: BookingStatusComponent }
 
 ];
 
