@@ -22,7 +22,6 @@ public class UserDetailsController {
     public List<UserDetails> getAllUser() {
 
         return userDetailsRepository.findAll();
-
     }
 
     @PostMapping("/user/save")
@@ -44,7 +43,7 @@ public class UserDetailsController {
         try {
             userDetailsRepository.deleteById(id);
         } catch (Exception e) {
-            throw new ResourceNotFoundException("No found data by this Id");
+                throw new ResourceNotFoundException("No found data by this Id");
         }
     }
 }

@@ -29,8 +29,8 @@
             </div>
             <div class="col-md-3">
               <label for="inputState" class="form-label">Working City</label>
-              <select id="inputState" class="form-select">
-                <option selected formControlName="heroCity" >Choose...</option>
+              <select id="inputState" class="form-select" formControlName="heroCity">
+               
                 <option>Dhaka</option>
                 <option>Pabna</option>
                 <option>Bhola</option>
@@ -60,7 +60,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">Address</th>
-                <th scope="col">Password</th>
+             
                 <th scope="col">Working City</th>
                 <th scope="col">Employee id</th>
                 <th scope="col">Action</th>
@@ -72,9 +72,9 @@
             <tbody>
               <tr *ngFor="let Delivery_man of delivary_man">
                 <td>{{Delivery_man.heroName}}</td>
-                <td>{{Delivery_man.heroCell}}</td>
                 <td>{{Delivery_man.heroEmail}}</td>
-                <td>{{Delivery_man.heroPassword}}</td>
+                <td>{{Delivery_man.heroCell}}</td>
+                
                 <td>{{Delivery_man.heroAddress}}</td>
                 <td>{{Delivery_man.heroCity}}</td>
                 <td>{{Delivery_man.empId}}</td>
