@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-user-details',
@@ -9,11 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserDetailsComponent implements OnInit {
   
-  form: FormGroup;
+  form: UntypedFormGroup;
   submitted = false;
   user_details: any = [];
   isEdit = false;
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: UntypedFormBuilder, private http: HttpClient) {
     this.form = fb.group({
       id: [],
       senderName: ['', Validators.required],
@@ -95,7 +96,6 @@ edit(UserDetails: any){
   });
   this.isEdit = true;
 }
-
 deleteById(id: number){
   let url = 'http://localhost:9001/user/delete/'+id;
   this.http.get(url).subscribe({
@@ -107,8 +107,6 @@ deleteById(id: number){
     }
   })
 }
-relode(){
-  window.location.reload();
-}
+
 
 }
