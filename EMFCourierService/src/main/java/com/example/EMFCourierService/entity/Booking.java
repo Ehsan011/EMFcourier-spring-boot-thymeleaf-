@@ -3,8 +3,8 @@ package com.example.EMFCourierService.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Drivers")
-public class Driver {
+@Table(name = "booking")
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -13,6 +13,15 @@ public class Driver {
     private int delivaryManId;
     private int officeExecutiveId;
     private String parcelStatus;
+    private String place;
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
 
     public int getId() {
         return id;

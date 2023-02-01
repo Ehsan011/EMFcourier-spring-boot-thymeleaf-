@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"*"})
-@RequestMapping("/executive")
+
 public class ExecutiveOfficeController {
 
     @Autowired

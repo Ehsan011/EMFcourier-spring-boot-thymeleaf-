@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"*"})
-@RequestMapping("/corporate")
+
 public class CorporateBookingController {
     @Autowired
     private CorporateBookingRepository corporateBookingRepository;
