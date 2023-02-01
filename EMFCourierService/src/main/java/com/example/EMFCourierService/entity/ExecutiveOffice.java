@@ -10,6 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name="executiveoffice")
 public class ExecutiveOffice {
 
     @Id
