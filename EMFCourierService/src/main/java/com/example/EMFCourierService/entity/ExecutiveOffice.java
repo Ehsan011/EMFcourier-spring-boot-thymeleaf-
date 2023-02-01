@@ -32,6 +32,9 @@ public class ExecutiveOffice {
     private  String exeAddress;
 
     @Column
+    private  String exeCity;
+
+    @Column
     private  String empId;
 
 }
