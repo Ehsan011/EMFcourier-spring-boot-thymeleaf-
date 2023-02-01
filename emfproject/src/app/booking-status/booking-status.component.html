@@ -7,11 +7,11 @@
                 ADD BOOKING (Status & Aria)
             </h2>
         </div>
-        <form class="row g-12" action="">
+        <form class="row g-12" [formGroup]="form" (ngSubmit)="save()" name="main_form">
             <div class="col-md-6">
               <label for="inputName5" class="form-label">BOOKING STATUS</label>
-              <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
+              <select id="inputState" class="form-select" formControlName="status">
+                <option [selected]>Choose...</option>
                 <option>PANDING</option>
                 <option>PROSSESSING</option>
                 <option>OUT FOR DELEVERY</option>
@@ -20,8 +20,8 @@
             </div>
             <div class="col-md-6">
               <label for="inputEmail5" class="form-label">ADD TOWN</label>
-              <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
+              <select id="inputState" class="form-select" formControlName="place">
+             
                 <option>DHAKA</option>
                 <option>BHOLA</option>
                 <option>PABNA</option>
@@ -29,27 +29,41 @@
               </select>
             </div>  
             <div class="text-center mt-2">
-              <button type="submit" class="btn btn-outline-success m-2">Submit</button>
-              <button  type="reset" class="btn btn-outline-secondary m-2">Reset</button>
+              <button type="submit" style="width: 20rem; color:#f2f3f3 ;background-color:#05816d "
+              class="btn btn-success btn-block mb-4"> {{isEdit?'Update':
+              'Save'}} </button>
+              <!-- <button  type="reset" class="btn btn-outline-secondary m-2">Reset</button> -->
             </div>
           </form>
     </div>  
     
+
+    <h2 class="fw-bold mb-5 text-center mt-3" style="color:#0b0b0b  ">Show Status</h2>
     <div class="border border-info p-4 mt-5">
         <table class="table table-striped mt-5">
             <thead>
               <tr>
-                <th scope="col">#</th>
+               
                 <th scope="col">BOOKING STATUS</th>
                 <th scope="col">ADD TOWN</th>
+                <th scope="col">Action</th>
                 
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let Status of status">
+                <td>{{Status.status}}</td>
+                <td>{{Status.place}}</td>
+
+                <td class="text-center">
+                  <button type="button" style="margin-right: 10px;" class="btn btn-warning" (click)="edit(Status)">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" (click)="deleteById(Status.id)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+      
+                </td>
               </tr>
             </tbody>
           </table>
