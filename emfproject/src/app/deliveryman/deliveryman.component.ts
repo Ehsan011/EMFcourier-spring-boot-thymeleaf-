@@ -18,7 +18,7 @@ export class DeliverymanComponent implements OnInit{
 
   form: UntypedFormGroup;
   submitted = false;
-  user_details: any = [];
+  delivary_man: any = [];
   isEdit = false;
   constructor(private fb: UntypedFormBuilder, private http: HttpClient) {
     this.form = fb.group({
@@ -46,7 +46,7 @@ export class DeliverymanComponent implements OnInit{
     this.submitted = true;
     if(this.form.valid){
 
-      let url = 'http://localhost:9001/user/save/';
+      let url = 'http://localhost:9001/delivary/save/';
       let data = this.form.value;
       this.http.post(url, data).subscribe({
         next: response => {
@@ -62,10 +62,10 @@ export class DeliverymanComponent implements OnInit{
     }
  }
  showAll(){
-  let url = 'http://localhost:9001/user/getall';
+  let url = 'http://localhost:9001/delivary/getall';
   this.http.get(url).subscribe({
     next: response =>{
-      this.user_details = response;
+      this.delivary_man = response;
     },
     error: err =>{
       console.log(err);        
@@ -73,4 +73,34 @@ export class DeliverymanComponent implements OnInit{
   })
 }
  
+edit(Delivery_man: any){
+  this.form.setValue({
+    
+    id: Delivery_man.id,
+    heroName: Delivery_man.heroName,
+    heroCell: Delivery_man.heroCell,
+    heroEmail: Delivery_man.heroEmail,
+    heroPassword: Delivery_man.heroPassword,
+    heroAddress: Delivery_man.heroAddress,
+    heroCity: Delivery_man.heroCity,
+    empId: Delivery_man.empId,
+      
+
+  });
+  this.isEdit = true;
 }
+deleteById(id: number){
+  let url = 'http://localhost:9001/delivary/delete/'+id;
+  this.http.get(url).subscribe({
+    next: response =>{
+      alert("Recored was deleted.");
+    },
+    error: err =>{
+      alert("Recored deletation failed!.");
+    }
+  })
+}
+
+
+}
+
