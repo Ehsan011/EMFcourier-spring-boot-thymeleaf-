@@ -18,26 +18,26 @@ public class UserDetailsController {
     @Autowired
     private UserDetailsRepository userDetailsRepository;
 
-    @GetMapping("/user/getall")
+    @GetMapping("/userd/getall")
     public List<UserDetails> getAllUser() {
 
         return userDetailsRepository.findAll();
     }
 
-    @PostMapping("/user/save")
+    @PostMapping("/userd/save")
     public UserDetails save(@RequestBody UserDetails userDetails) {
         //System.out.print(senserDetails)
         return userDetailsRepository.save(userDetails);
 //     return new SenderDetails();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/userd/{id}")
     public UserDetails getOne(@PathVariable(value = "id") int id) {
 
         return userDetailsRepository.findById(id).get();
     }
 
-    @GetMapping("/user/delete/{id}")
+    @GetMapping("/userd/delete/{id}")
     public void delete(@PathVariable(value = "id") int id) {
 
         try {

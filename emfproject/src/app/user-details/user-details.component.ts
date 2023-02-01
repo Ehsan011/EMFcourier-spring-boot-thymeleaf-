@@ -48,7 +48,7 @@ export class UserDetailsComponent implements OnInit {
     this.submitted = true;
     if(this.form.valid){
 
-      let url = 'http://localhost:9001/user/save/';
+      let url = 'http://localhost:9001/userd/save/';
       let data = this.form.value;
       this.http.post(url, data).subscribe({
         next: response => {
@@ -64,7 +64,7 @@ export class UserDetailsComponent implements OnInit {
     }
  }
  showAll(){
-  let url = 'http://localhost:9001/user/getall';
+  let url = 'http://localhost:9001/userd/getall';
   this.http.get(url).subscribe({
     next: response =>{
       this.user_details = response;
@@ -97,7 +97,7 @@ edit(UserDetails: any){
   this.isEdit = true;
 }
 deleteById(id: number){
-  let url = 'http://localhost:9001/user/delete/'+id;
+  let url = 'http://localhost:9001/userd/delete/'+id;
   this.http.get(url).subscribe({
     next: response =>{
       alert("Recored was deleted.");

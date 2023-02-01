@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Deliveryman } from 'src/app/model/deliveryman';
-import { DeliverymanService } from 'src/app/services/deliveryman.service';
 import {  UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 

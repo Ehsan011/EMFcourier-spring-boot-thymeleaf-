@@ -28,6 +28,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookingStatusComponent } from './booking-status/booking-status.component';
+import { LoginformComponent } from './loginform/loginform.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { BookingStatusComponent } from './booking-status/booking-status.componen
     ParcelDetailsComponent,
     TrackingDetailsComponent,
     UserDetailsComponent,
-    BookingStatusComponent
+    BookingStatusComponent,
+    LoginformComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
