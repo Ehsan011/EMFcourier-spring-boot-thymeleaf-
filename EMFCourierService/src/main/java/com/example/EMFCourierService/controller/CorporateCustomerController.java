@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"*"})
-
+@RequestMapping("/corporate")
 public class CorporateCustomerController {
     @Autowired
     private CorporateCustomerRepository corporateCustomerRepository;
