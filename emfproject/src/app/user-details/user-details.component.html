@@ -41,7 +41,7 @@
         <div class="col-md-4">
           <label for="inputState" class="form-label">District</label>
           <select id="inputState" class="form-select" formControlName="district">
-           
+            <option value="Select" selected>Select</option>
             <option value="Dhaka">Dhaka</option>
             <option value="Pabna">pabna</option>
             <option value="Bogra">Bogra</option>
@@ -54,7 +54,7 @@
         <div class="col-md-4">
           <label for="inputCity" class="form-label">Nearest Area</label>
           <select id="inputCity" class="form-select" formControlName="nearestArea">
-        
+            <option value="Select" selected>Select</option>
             <option value="12Tola">12 Tola</option>
             <option value="AamBagan">Aam bagan</option>
             <option value="PabnaSador">Pabna Sador</option>
@@ -105,8 +105,8 @@
         <div class="col-md-6">
           <label for="selectProductType8" class="form-label">Select Product Type</label>
           <select id="selectProductType8" class="form-select" formControlName="selectProductType">
-
-            <option value="Document">Document</option>
+            
+            <option value="Document" selected>Document</option>
             <option value="Parcel">Parcel</option>
             <option value="Electronics">Electronics</option>
             <option value="Foods">Foods</option>
@@ -117,7 +117,7 @@
         <div class="col-md-6">
           <label for="packageWeight7" class="form-label">Package weight (KG)</label>
           <select id="packageWeight7" class="form-select" formControlName="packageWeight">
-            <option selected>Select Weight</option>
+            <option value="Select Weight" selected>Select Weight</option>
             <option value="Up_to_1kg">Up to 1kg</option>
             <option value="1-2kg">1-2kg</option>
             <option value="2-3kg">2-3kg</option>
@@ -177,17 +177,17 @@
       <table class="table table-stribed " >
         <thead>
           <tr>
-            <th scope="col">Sender Name</th>
-            <th scope="col">Mobile No</th>
+            <th scope="col">S.Name</th>
+           
             <th scope="col">District</th>
-            <th scope="col">Nearest Area</th>
-            <th scope="col">Sender Address</th>
-            <th scope="col">Recipient Name</th>
-            <th scope="col">Mobile No</th>
-            <th>Recipient Address</th>
-            <th>Product Type</th>
-            <th>Package Weight</th>
-            <th>no Of Item</th>
+            <th scope="col">N.Area</th>
+        
+            <th scope="col">R.Name</th>
+            <th scope="col">Mobile</th>
+            <th>R.Address</th>
+            <th>P.Type</th>
+            <th>P.Weight</th>
+            <th>no.Item</th>
             <th>payment</th>
             <th>Action</th>
             
@@ -199,10 +199,10 @@
         <tbody>
           <tr *ngFor="let UserDetails of user_details">
             <td>{{UserDetails.senderName}}</td>
-            <td>{{UserDetails.senderMobileNo}}</td>
+           
             <td>{{UserDetails.district}}</td>
             <td>{{UserDetails.nearestArea}}</td>
-            <td>{{UserDetails.senderAddress}}</td>
+            
             <td>{{UserDetails.recipientName}}</td>
             <td>{{UserDetails.recipientMobileNo}}</td>
             <td>{{UserDetails.recipientAddress}}</td>

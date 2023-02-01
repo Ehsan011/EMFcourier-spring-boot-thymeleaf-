@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BookingStatusComponent } from './booking-status/booking-status.component';
 import { LoginformComponent } from './loginform/loginform.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SignupComponent } from './signup/signup.component';
     UserDetailsComponent,
     BookingStatusComponent,
     LoginformComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { ExecutiveOfficeComponent } from './executive-office/executive-office.co
 import { HomeComponent } from './home/home.component';
 import { LoginformComponent } from './loginform/loginform.component';
 import { ParcelDetailsComponent } from './parcel-details/parcel-details.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
 import { SenderInfoComponent } from './sender-info/sender-info.component';
 import { AuthGuard } from './services/auth.guard';
@@ -38,7 +39,9 @@ const routes: Routes = [
   { path: 'user_details' , component: UserDetailsComponent ,canActivate:[AuthGuard]},
   { path: 'booking_status' , component: BookingStatusComponent },
   {path : 'loginform' , component : LoginformComponent },
-  {path : 'signup', component: SignupComponent}
+  {path : 'signup', component: SignupComponent},
+  {path : 'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  
 ];
 
 

@@ -28,7 +28,7 @@ export class DeliverymanComponent implements OnInit{
       heroEmail: ['', ],
       heroPassword: ['', ],
       heroAddress: ['', ],
-      heroCity: ['', ],
+      heroCity: ['Select', ],
       empId: ['', ]
       
       
@@ -51,6 +51,7 @@ export class DeliverymanComponent implements OnInit{
       this.http.post(url, data).subscribe({
         next: response => {
           alert("Data was saved successful.")
+          this.showAll();
         },
         error: err =>{
           alert("Data was saved failed!, Please try again.")
@@ -94,6 +95,7 @@ deleteById(id: number){
   this.http.get(url).subscribe({
     next: response =>{
       alert("Recored was deleted.");
+      this.showAll();
     },
     error: err =>{
       alert("Recored deletation failed!.");
@@ -101,6 +103,10 @@ deleteById(id: number){
   })
 }
 
+
+relode(){
+  window.location.reload();
+}
 
 }
 

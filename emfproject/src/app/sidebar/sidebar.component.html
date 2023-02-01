@@ -100,8 +100,9 @@
       </ul>
     </li><!-- End Components -->
 
+    <!-- href="users-profile.html" -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="users-profile.html">
+      <a class="nav-link collapsed" routerLink="/profile" >
         <i class="bi bi-person"></i>
         <span>Profile</span>
       </a>
@@ -122,11 +123,20 @@
     </li><!-- End Register Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-login.html">
+      <a class="nav-link collapsed" routerLink="/loginform">
         <i class="bi bi-box-arrow-in-right"></i>
         <span>Login</span>
       </a>
     </li><!-- End Login Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" (click)="logout()">
+        <i class="bi bi-dash-circle"></i>
+        <span>Logout</span>
+      </a>
+    </li><!-- End Error 404 Page Nav -->
+
+
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="pages-error-404.html">
@@ -134,6 +144,8 @@
         <span>Error 404</span>
       </a>
     </li><!-- End Error 404 Page Nav -->
+
+    
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="pages-blank.html">

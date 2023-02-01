@@ -19,16 +19,16 @@ export class UserDetailsComponent implements OnInit {
       id: [],
       senderName: ['', Validators.required],
       senderMobileNo: ['', ],
-      district: ['', ],
-      nearestArea: ['', ],
+      district: ['Select', ],
+      nearestArea: ['Select', ],
       senderAddress: ['', ],
       postalCode: ['', ],
       recipientName: ['', ],
       recipientMobileNo: ['', ],
       recipientAddress: ['', ],
       instruction: ['', ],
-      selectProductType: ['', ],
-      packageWeight: ['', ],
+      selectProductType: ['Document', ],
+      packageWeight: ['Select Weight', ],
       numberOfItem: ['', ],
       payment: ['', ]
       
@@ -53,6 +53,7 @@ export class UserDetailsComponent implements OnInit {
       this.http.post(url, data).subscribe({
         next: response => {
           alert("Data was saved successful.")
+          this.showAll();
         },
         error: err =>{
           alert("Data was saved failed!, Please try again.")
@@ -101,12 +102,19 @@ deleteById(id: number){
   this.http.get(url).subscribe({
     next: response =>{
       alert("Recored was deleted.");
+      this.showAll();
     },
     error: err =>{
       alert("Recored deletation failed!.");
     }
   })
 }
+
+
+        relode(){
+          window.location.reload();
+        }
+
 
 
 }
