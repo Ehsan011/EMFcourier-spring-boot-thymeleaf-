@@ -24,40 +24,39 @@ export class DeliverymanComponent implements OnInit{
     private deliveryservice:DeliverymanService) { }
 
   ngOnInit(): void {
-    this.deliveryhero=new Deliveryman();
-    this.getAllHero();
+   
 
   }
 
-  getAllHero(){
-    this.deliveryservice.getAllHero().subscribe(res=>{
-      this.allhero=res;
-    })
-  }
+  // getAllHero(){
+  //   this.deliveryservice.getAllHero().subscribe(res=>{
+  //     this.allhero=res;
+  //   })
+  // }
 
-  addHero(){
-    this.submitted=true;
-    this.deliveryservice.createHero(this.deliveryhero).subscribe(res=>{
-      this.ngOnInit()
-    },err=>{
-      alert(err);
-    })
-  }
+  // addHero(){
+  //   this.submitted=true;
+  //   this.deliveryservice.createHero(this.deliveryhero).subscribe(res=>{
+  //     this.ngOnInit()
+  //   },err=>{
+  //     alert(err);
+  //   })
+  // }
 
-  editHero(){
-    this.deliveryservice.updateHero(this.deliveryhero).subscribe( res=> {
-      this.ngOnInit();
-    }, err=>{
-        alert("Failed to update data");
-    })
-  }
+  // editHero(){
+  //   this.deliveryservice.updateHero(this.deliveryhero).subscribe( res=> {
+  //     this.ngOnInit();
+  //   }, err=>{
+  //       alert("Failed to update data");
+  //   })
+  // }
 
-  deleteHero(heroId: Deliveryman){
-    this.deliveryservice.deleteHero(heroId).subscribe(res=>{
-      this.ngOnInit();
-    }, err=>{
-      alert("Failed to delete Data")
-    }
-    )
-  }
+  // deleteHero(heroId: Deliveryman){
+  //   this.deliveryservice.deleteHero(heroId).subscribe(res=>{
+  //     this.ngOnInit();
+  //   }, err=>{
+  //     alert("Failed to delete Data")
+  //   }
+  //   )
+  // }
 }
