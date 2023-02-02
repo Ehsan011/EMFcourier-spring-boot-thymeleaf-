@@ -1,6 +1,5 @@
 package com.example.EMFCourierService.controller;
 
-
 import com.example.EMFCourierService.entity.DelivaryInventory;
 import com.example.EMFCourierService.entity.DelivaryManDetails;
 import com.example.EMFCourierService.entity.OrderDetails;
@@ -29,7 +28,7 @@ public class RestControllerOrderProcessing {
         return orderDetailsRepo.findAll();
     }
 
-    @RequestMapping("/save_oder")
+    @RequestMapping("/save_coustomar_oder")
     public void saveOder(@RequestBody OrderDetails or) {
         orderDetailsRepo.save(or);
     }
@@ -54,10 +53,5 @@ public class RestControllerOrderProcessing {
         dlIn.setInventory_order_staus(2);
         delivaryInventoryRepo.save(dlIn);
     }
-
-
-
-
-
 
 }
