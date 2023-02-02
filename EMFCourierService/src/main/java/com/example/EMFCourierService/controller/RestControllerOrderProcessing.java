@@ -1,5 +1,6 @@
 package com.example.EMFCourierService.controller;
 
+<<<<<<< HEAD
 
 import com.example.EMFCourierService.entity.DelivaryInventory;
 import com.example.EMFCourierService.entity.DelivaryManDetails;
@@ -61,3 +62,7 @@ public class RestControllerOrderProcessing {
 
 
 }
+=======
+public class RestControllerOrderProcessing {
+}
+>>>>>>> 17ac674e68eaefc876fb8eb06d850352f76f273e
