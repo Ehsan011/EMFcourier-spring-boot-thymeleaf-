@@ -21,7 +21,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 
 const routes: Routes = [
-  {path : '' , component : LoginformComponent },
+  // {path : '' , component : LoginformComponent },
   { path: 'about_emf' , component: AboutComponent },
   { path: '', component: UserhomeComponent },
   { path: 'admin_home' , component: HomeComponent },
